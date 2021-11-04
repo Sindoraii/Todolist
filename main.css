@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.CommonComponent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:  1px solid black;
+    width: 40em;
+    min-height: 10em;
+    margin-top: 11px;
+    align-self: center;
+    text-align: center;
+}
