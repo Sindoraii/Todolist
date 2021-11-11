@@ -1,13 +1,17 @@
 //import
-/*let CommonComponent = window.CommonComponent;
+let taskComponent = window.TaskComponent;
 
 let body = document.querySelector('body');
 let root = document.createElement('div');
 root.className = 'root';
+body.appendChild(root);
 
-CommonComponent.mount(body,root); без общего компонента
-CommonComponent.unmount(root);
-*/
+//test
+taskComponent.mount(root);
+
+
+
+
 
 
 
