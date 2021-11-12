@@ -2,20 +2,38 @@
     let  TaskComponent = {};
 
     const elem = document.createElement('div');
-    elem.className = 'todo_task';
+    elem.className = 'todo-task';
 
     let parentElem = null;
 
     //header
     const taskName = document.createElement('div');
     taskName.innerText = 'New task';
-    taskName.className = 'todo_task_header';
+    taskName.className = 'todo-task_header';
     elem.appendChild(taskName);
+
+    //wrapper with task content
+    const wrapperRow = document.createElement('div');
+    wrapperRow.className = 'todo-task_wrapper';
+    elem.appendChild(wrapperRow);
 
     //status
     const taskStatus = document.createElement('div');
-    taskStatus.className = 'todo_task_status';
-    elem.appendChild(taskStatus);
+    taskStatus.className = 'todo-task_status';
+    wrapperRow.appendChild(taskStatus);
+
+    //description
+    const taskDesc = document.createElement('input');
+    taskDesc.placeholder = 'Add comment...';
+    taskDesc.readOnly = true;
+    taskDesc.className = 'todo-task_desc';
+    wrapperRow.appendChild(taskDesc);
+
+    //changing status button
+    const taskButton = document.createElement('button');
+    taskButton.className = 'todo-task_status todo-task_status_button-change';
+    taskButton.innerText = 'change status';
+    wrapperRow.appendChild(taskButton);
 
     //public methods
     function mount(parent) {

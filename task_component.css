@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.todo_task {
+.todo-task {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,15 +16,30 @@
     text-align: center;
 }
 
-.todo_task_header {
+.todo-task_header {
     padding: 8px;
     flex-basis: 100%;
     font-size: 24px;
 }
 
-.todo_task_status {
-    width: 4em;
-    height: 4em;
+.todo-task_wrapper{
+    display: flex;
+    flex-direction: row;
+}
+.todo-task_status {
+    min-width: 3em;
     border: 1px solid black;
     margin: 8px;
+}
+
+.todo-task_desc {
+    padding: 8px;
+    margin: 8px;
+    font-size: 8px;
+    flex: 1;
+}
+
+.todo-task_status_button-change {
+    cursor: pointer;
+    padding: 8px;
 }
