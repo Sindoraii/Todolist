@@ -1,50 +1,47 @@
-(function (){
-     let TaskComponent = {};
+(function () {
+    let  TaskComponent = {};
 
-        let elem = document.createElement('div');
-        elem.className = 'todo_task';
+    const elem = document.createElement('div');
+    elem.className = 'todo_task';
 
-        let parentElem = null;
+    let parentElem = null;
 
-        //header
-        let taskName = document.createElement('div');
-        taskName.innerText = 'New task';
-        taskName.className = 'todo_task_header';
-        elem.appendChild(taskName);
+    //header
+    const taskName = document.createElement('div');
+    taskName.innerText = 'New task';
+    taskName.className = 'todo_task_header';
+    elem.appendChild(taskName);
 
-        //status
-        let taskStatus = document.createElement('div');
-        taskStatus.className = 'todo_task_status';
-        elem.appendChild(taskStatus);
+    //status
+    const taskStatus = document.createElement('div');
+    taskStatus.className = 'todo_task_status';
+    elem.appendChild(taskStatus);
 
-
-        //public methods
-
-        function mount(parent) {
-            if(parent instanceof HTMLElement) {
-                parentElem = parent;
-                parentElem.appendChild(this.elem);
-
-            } else {
-                console.error("TaskComponent: this parent is not correct type");
-            }
+    //public methods
+    function mount(parent) {
+        if (parent instanceof HTMLElement) {
+            parentElem = parent;
+            parentElem.appendChild(this.elem);
+        } else {
+            console.error("TaskComponent: this parent is not correct type");
         }
+    }
 
-        function unmount(parent) {
-            if(parent === parentElem) {
-                this.elem.remove();
-            } else {
-                console.error('TaskComponent: this elem is not parent');
-            }
+    function unmount(parent) {
+        if (parent === parentElem) {
+            this.elem.remove();
+        } else {
+            console.error('TaskComponent: this elem is not parent');
         }
+    }
 
-        TaskComponent = {
-            elem: elem,
-            header: taskName,
-            status: taskStatus
-        };
+    TaskComponent = {
+        elem: elem,
+        header: taskName,
+        status: taskStatus
+    };
 
-    //bind context
+    //publish methods
     TaskComponent.unmount = unmount.bind(TaskComponent);
     TaskComponent.mount = mount.bind(TaskComponent);
 

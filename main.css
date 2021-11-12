@@ -11,20 +11,20 @@
     border:  1px solid black;
     width: 20em;
     min-height: 5em;
-    margin: 10px;
+    margin: 8px;
     align-self: center;
     text-align: center;
 }
 
 .todo_task_header {
-    padding: 10px;
+    padding: 8px;
     flex-basis: 100%;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .todo_task_status {
     width: 4em;
     height: 4em;
     border: 1px solid black;
-    margin: 10px;
+    margin: 8px;
 }
