@@ -1,7 +1,9 @@
 //import
 const taskComponent = window.TaskComponent;
+const listComponent = window.ListComponent;
 
 let body = document.querySelector('body');
 let root = document.getElementById('root');
 body.appendChild(root);
-taskComponent.mount(root);
+//test
+listComponent.mount(root);
