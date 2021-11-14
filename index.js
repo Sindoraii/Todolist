@@ -1,5 +1,4 @@
 //import
-const taskComponent = window.TaskComponent;
 const listComponent = window.ListComponent;
 
 let body = document.querySelector('body');
