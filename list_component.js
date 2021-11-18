@@ -1,6 +1,6 @@
 (function (){
     //import
-    const taskComponent = window.TaskComponent;
+    const  TaskComponent = window.TaskComponent;
 
     let ListComponent = {};
     const listNode = document.createElement('div');
@@ -9,18 +9,15 @@
     let parentElem = null;
 
     //hard task Data
-    let task1 = taskComponent.createTask('header', 'in-progress', 'my comment');
-    let task2 = taskComponent.createTask('имя задачи', 'в процессе', 'статус неправильный');
-    //test
-    console.log( task1 );
-    console.log(task2);
-    let tasks = [task1,task2];
+    let task1 = new TaskComponent('header', 'in-progress', 'my comment');
+    let task2 = new TaskComponent('имя задачи', 'в процессе', 'статус неправильный');
+    let task3 = new TaskComponent ('header', 'in-progress', 'my comment');
+    let tasks = [task1,task2,task3];
 
     //private methods
     function addTask(taskData) {
         taskData.forEach(taskElem => {
-            let node = taskElem.taskNode;
-            listNode.appendChild(node);
+            taskElem.mount(listNode);
         })
     }
     addTask(tasks);
@@ -29,7 +26,7 @@
     function mount(parent) {
         if (parent instanceof HTMLElement) {
             parentElem = parent;
-            parentElem.appendChild(this.listNode);
+            parentElem.appendChild(listNode);
         } else {
             console.error("ListComponent: this parent is not correct type");
         }
@@ -37,7 +34,7 @@
 
     function unmount(parent) {
         if (parent === parentElem) {
-            this.listNode.remove();
+            listNode.remove();
         } else {
             console.error('ListComponent: this elem is not parent');
         }
