@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     border:  1px solid black;
-    width: 20em;
+    min-width: 20em;
     min-height: 5em;
     margin: 8px;
     align-self: center;
@@ -47,11 +47,13 @@
 .todo-task_desc {
     padding: 8px;
     margin: 8px;
-    font-size: 8px;
     flex: 1;
 }
 
 .todo-task_status_button-change {
     cursor: pointer;
     padding: 8px;
+}
+.todo-task_status_button-change:hover {
+    background-color: lightblue;
 }
