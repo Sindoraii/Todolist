@@ -7,7 +7,7 @@
         let parentElem = null;
 
         //public methods
-        this.mount = function (parent) {
+        this.mountTask = function (parent) {
             if (parent instanceof HTMLElement) {
                 parentElem = parent;
                 parentElem.appendChild(taskNode);
@@ -16,7 +16,7 @@
             }
         }
 
-        this.unmount = function (parent) {
+        this.unmountTask = function (parent) {
             if (parent === parentElem) {
                 taskNode.remove(); //taskNode
             } else {

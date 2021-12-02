@@ -1,53 +1,43 @@
 (function (){
-    //import
-    const  TaskComponent = window.TaskComponent;
+    function ListComponent() {
 
-    let ListComponent = {};
-    const listNode = document.createElement('div');
-    listNode.className = "todo-list";
-
-    let parentElem = null;
-
-    //hard task Data
-    let task1 = new TaskComponent('header', 'in-progress', 'my comment');
-    let task2 = new TaskComponent('имя задачи', 'в процессе', 'статус неправильный');
-    let task3 = new TaskComponent ('header', 'in-progress', 'my comment');
-    let tasks = [task1,task2,task3];
-
-    //private methods
-    function addTask(taskData) {
-        taskData.forEach(taskElem => {
-            taskElem.mount(listNode);
-        })
-    }
-    addTask(tasks);
-
-    //public methods
-    function mount(parent) {
-        if (parent instanceof HTMLElement) {
-            parentElem = parent;
-            parentElem.appendChild(listNode);
-        } else {
-            console.error("ListComponent: this parent is not correct type");
+        function update (dataArray) {
+            for (let i = 0; i < dataArray.length; i++) {
+                dataArray[i].mountTask(listNode);
+            }
         }
-    }
 
-    function unmount(parent) {
-        if (parent === parentElem) {
-            listNode.remove();
-        } else {
-            console.error('ListComponent: this elem is not parent');
+        function mount(parent) {
+            if (listNode.hasChildNodes() === true) {
+                if (parent instanceof HTMLElement) {
+                    parentElem = parent;
+                    parentElem.appendChild(listNode);
+                } else {
+                    console.error("ListComponent: this parent is not correct type");
+                }
+            }else {
+                console.error('ListComponent: List has not task');
+            }
         }
-    }
 
-    ListComponent = {
-        listNode:listNode,
-        tasks:tasks
-    }
-    //publish methods
-    ListComponent.mount = mount.bind(ListComponent);
-    ListComponent.unmount = unmount.bind(ListComponent);
+        function unmount (parent) {
+            if (parent === parentElem) {
+                listNode.remove();
+            } else {
+                console.error('ListComponent: this elem is not parent');
+            }
+        }
 
+        const listNode = document.createElement('div');
+        listNode.className = "todo-list";
+
+        let parentElem = null;
+
+        this.update = update.bind(this);
+        this.mount = mount.bind(this);
+        this.unmount = unmount.bind(this);
+
+    }
     //export
-    window.ListComponent = ListComponent;
+    window.ListComponent = new ListComponent();
 })()
