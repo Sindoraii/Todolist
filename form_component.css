@@ -1,0 +1,17 @@
+*, :before,:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:  1px solid black;
+    width: 30em;
+    min-height: 10em;
+    margin: 8px;
+    align-self: center;
+    text-align: center;
+}

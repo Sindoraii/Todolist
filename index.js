@@ -2,22 +2,19 @@
 const listComponent = window.ListComponent;
 const DataSourse = window.DataSourse;
 const TaskComponent = window.TaskComponent;
+const FormComponent = window.FormComponent;
 
 let body = document.querySelector('body');
 let root = document.getElementById('root');
 body.appendChild(root);
 
-
-
-let task1 = new TaskComponent('header1','success','comment1');
-let task2 = new TaskComponent('header2','success','comment2');
-let task3 = new TaskComponent('header3','success','comment3');
-let task4 = new TaskComponent('header4','success','comment4');
-
-let tasks = [task1,task2,task3,task4,];
-
-
+let data1 = ['header1','success','comment1'];
+let data2 = ['header2','in-progress','comment2'];
+let data3 = {header: 'header3', status: 'failed',description:'Comment3'}
 
 DataSourse.subscribe(listComponent.update);
-DataSourse.update(tasks);
+DataSourse.update(data1);
+DataSourse.update(data2);
+DataSourse.update(data3);
+FormComponent.mount(root);
 listComponent.mount(root);

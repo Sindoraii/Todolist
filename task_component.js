@@ -56,7 +56,7 @@
             default:
                 this.taskStatus = "default";
                 taskStatus.className = 'todo-task_status';
-                console.error("Status is not true. Chose 'success','failed' or 'in-progress'.");
+                console.error("Status is not true. Choose 'success','failed' or 'in-progress'.");
                 break;
         }
         wrapperRow.appendChild(taskStatus);

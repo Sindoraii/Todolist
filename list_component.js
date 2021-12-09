@@ -2,12 +2,15 @@
     function ListComponent() {
 
         function update (dataArray) {
-            for (let i = 0; i < dataArray.length; i++) {
-                dataArray[i].mountTask(listNode);
-            }
-        }
+            let header = dataArray[0];
+            let status = dataArray[1];
+            let desc = dataArray[2];
 
-        function mount(parent) {
+            let task = new TaskComponent(header,status,desc);
+            task.mountTask(listNode);
+            }
+
+       function mount(parent) {
             if (listNode.hasChildNodes() === true) {
                 if (parent instanceof HTMLElement) {
                     parentElem = parent;
@@ -36,7 +39,6 @@
         this.update = update.bind(this);
         this.mount = mount.bind(this);
         this.unmount = unmount.bind(this);
-
     }
     //export
     window.ListComponent = new ListComponent();

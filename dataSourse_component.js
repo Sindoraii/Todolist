@@ -9,19 +9,23 @@
             this.data = data;
 
             function prepareData(data) {
-                let dataArr = [];
-                if (Array.isArray(data) === true) {
+                let propsValue = [];
+                if(Array.isArray(data) === true) {
                     return data;
-                } else {
-                    dataArr.push(data);
-                    return dataArr;
+                } else if (data.hasOwnProperty('header') && data.hasOwnProperty('status') && data.hasOwnProperty('description')){
+                    for(const prop in data) {
+                        propsValue.push(data[prop]);
+                    }
+                    return propsValue;
+                }
+                else {
+                    console.error('DataSource: input data is incorrect');
                 }
             }
             this.liseners.forEach((listener) => {
                 listener(prepareData(this.data));
             })
         }
-
         this.liseners = [];
         this.subscribe = subscribe.bind(this);
         this.update = update.bind(this);
