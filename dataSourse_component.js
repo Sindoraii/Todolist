@@ -6,25 +6,21 @@
         }
 
         function update(data) {
-            this.data = data;
-
-            function prepareData(data) {
+            if(data.hasOwnProperty('header') && data.hasOwnProperty('description')) {
+                this.data = data;
                 let propsValue = [];
-                if(Array.isArray(data) === true) {
-                    return data;
-                } else if (data.hasOwnProperty('header') && data.hasOwnProperty('status') && data.hasOwnProperty('description')){
-                    for(const prop in data) {
-                        propsValue.push(data[prop]);
-                    }
-                    return propsValue;
+
+                for(const prop in data) {
+                    propsValue.push(data[prop]);
                 }
-                else {
-                    console.error('DataSource: input data is incorrect');
-                }
+                this.liseners.forEach((lisener) => {
+                    lisener(propsValue);
+                })
+
+
+            } else {
+                console.error('DataSource: data is incorrect');
             }
-            this.liseners.forEach((listener) => {
-                listener(prepareData(this.data));
-            })
         }
         this.liseners = [];
         this.subscribe = subscribe.bind(this);

@@ -1,10 +1,45 @@
 (function () {
-      function TaskComponent(header,status,description) {
+      function TaskComponent(header,description) {
         //parent for elements of task
         let taskNode =  document.createElement('div');
         taskNode.className = 'todo-task';
 
         let parentElem = null;
+        //private methods
+
+          function createInputRadio(name,value, parent) {
+              if (parent instanceof HTMLElement && typeof value === 'string') {
+                  //input
+                  let radio = document.createElement('input');
+                  radio.type = 'radio';
+                  radio.name = name;
+                  radio.id = value;
+                  //label
+                  let label = document.createElement('label');
+                  label.setAttribute('for',radio.id);
+                  label.innerText = value;
+                  //wrapper
+                  const wrapper = document.createElement('div');
+                  wrapper.className = 'todo-task_wrapper';
+
+                  wrapper.appendChild(radio);
+                  wrapper.appendChild(label);
+                  parent.appendChild(wrapper);
+
+              } else {
+                  console.error("TaskComponent: arguments is not correct type");
+              }
+          }
+          function createChangingStatusForm(parent) {
+              let form = document.createElement('div');
+              form.className = 'todo-task_check-status-form';
+
+              createInputRadio('status','failed',form);
+              createInputRadio('status', 'in-progress',form);
+              createInputRadio('status','success',form);
+              parent.appendChild(form);
+
+          }
 
         //public methods
         this.mountTask = function (parent) {
@@ -32,15 +67,15 @@
         if (this.taskName) {
            taskName.innerText = this.taskName;
         }
-       taskNode.appendChild(taskName);
+
 
         //wrapper with task content
         const wrapperRow = document.createElement('div');
         wrapperRow.className = 'todo-task_wrapper';
-        taskNode.appendChild(wrapperRow);
+
 
         //status
-        this.taskStatus = status;
+        /*let status;
         let taskStatus = document.createElement('div');
 
         switch (this.taskStatus) {
@@ -59,7 +94,7 @@
                 console.error("Status is not true. Choose 'success','failed' or 'in-progress'.");
                 break;
         }
-        wrapperRow.appendChild(taskStatus);
+        //wrapperRow.appendChild(taskStatus);*/
 
         //description
         this.desc = description;
@@ -70,13 +105,23 @@
         if (this.desc) {
             taskDesc.value = this.desc;
         }
-        wrapperRow.appendChild(taskDesc);
-
         //changing status button
         const taskButton = document.createElement('button');
         taskButton.className = 'todo-task_status todo-task_status_button-change';
         taskButton.innerText = 'change status';
-        wrapperRow.appendChild(taskButton);
+
+        //events
+        taskButton.addEventListener('click',(event) => {
+            let elem = event.target.parentNode.querySelector('.todo-task_check-status-form');
+             if(!event.target.parentNode.contains(elem)) {
+                 createChangingStatusForm(event.target.parentNode);
+             }
+        })
+
+          taskNode.appendChild(taskName);
+          taskNode.appendChild(wrapperRow);
+          wrapperRow.appendChild(taskDesc);
+          wrapperRow.appendChild(taskButton);
       }
 
     //export

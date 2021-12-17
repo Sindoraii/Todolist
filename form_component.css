@@ -7,11 +7,30 @@
 .todo-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-content: center;
     border:  1px solid black;
     width: 30em;
     min-height: 10em;
-    margin: 8px;
+    margin: 8px 8px 16px 8px;
+}
+.todo-form_header{
     align-self: center;
-    text-align: center;
+    font-size: 28px;
+    margin: 8px;
+}
+
+.todo-form_label{
+    margin:  0 8px ;
+}
+.todo-form_input {
+    border: 1px solid black;
+    margin: 8px;
+    padding: 4px;
+}
+.todo-form_description {
+    resize: none;
+    margin: 8px;
+    padding: 4px;
+    font-family: sans-serif;
+    overflow: auto;
 }
