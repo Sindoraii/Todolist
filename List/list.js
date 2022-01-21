@@ -1,6 +1,8 @@
 (function (){
-    function ListComponent() {
+    //import
+    const TaskComponent = window.TaskComponent;
 
+    function ListComponent() {
         function update (dataArray) {
             let header = dataArray[0];
             let status = dataArray[1];

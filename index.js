@@ -1,7 +1,7 @@
 //import
 const listComponent = window.ListComponent;
 const DataSourse = window.DataSourse;
-const TaskComponent = window.TaskComponent;
+// const TaskComponent = window.TaskComponent;
 const FormComponent = window.FormComponent;
 
 const body = document.querySelector('body');
