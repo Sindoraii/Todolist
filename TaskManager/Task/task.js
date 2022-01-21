@@ -1,45 +1,46 @@
 (function () {
-      function TaskComponent(header,description, status) {
+    function TaskComponent(id, header, description, status, updater) {
         //parent for elements of task
-        let taskNode =  document.createElement('div');
+        let taskNode = document.createElement('div');
         taskNode.className = 'todo-task';
 
         let parentElem = null;
+
         //private methods
+        function createInputRadio(name, value, parent) {
+            if (parent instanceof HTMLElement && typeof value === 'string') {
+                //input
+                let radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = name;
+                radio.id = value;
+                //label
+                let label = document.createElement('label');
+                label.setAttribute('for', radio.id);
+                label.innerText = value;
+                //wrapper
+                const wrapper = document.createElement('div');
+                wrapper.className = 'todo-task_wrapper';
 
-          function createInputRadio(name,value, parent) {
-              if (parent instanceof HTMLElement && typeof value === 'string') {
-                  //input
-                  let radio = document.createElement('input');
-                  radio.type = 'radio';
-                  radio.name = name;
-                  radio.id = value;
-                  //label
-                  let label = document.createElement('label');
-                  label.setAttribute('for',radio.id);
-                  label.innerText = value;
-                  //wrapper
-                  const wrapper = document.createElement('div');
-                  wrapper.className = 'todo-task_wrapper';
+                wrapper.appendChild(radio);
+                wrapper.appendChild(label);
+                parent.appendChild(wrapper);
 
-                  wrapper.appendChild(radio);
-                  wrapper.appendChild(label);
-                  parent.appendChild(wrapper);
+            } else {
+                console.error("TaskComponent: arguments is not correct type");
+            }
+        }
 
-              } else {
-                  console.error("TaskComponent: arguments is not correct type");
-              }
-          }
-          function createChangingStatusForm(parent) {
-              let form = document.createElement('div');
-              form.className = 'todo-task_check-status-form';
+        function createChangingStatusForm(parent) {
+            let form = document.createElement('div');
+            form.className = 'todo-task_check-status-form';
 
-              createInputRadio('status','failed',form);
-              createInputRadio('status', 'in-progress',form);
-              createInputRadio('status','success',form);
-              parent.appendChild(form);
+            createInputRadio('status', 'failed', form);
+            createInputRadio('status', 'in-progress', form);
+            createInputRadio('status', 'success', form);
+            parent.appendChild(form);
 
-          }
+        }
 
         //public methods
         this.mountTask = function (parent) {
@@ -65,7 +66,7 @@
         taskName.innerText = 'New task';
         taskName.className = 'todo-task_header';
         if (this.taskName) {
-           taskName.innerText = this.taskName;
+            taskName.innerText = this.taskName;
         }
 
 
@@ -105,24 +106,34 @@
         if (this.desc) {
             taskDesc.value = this.desc;
         }
-        //changing status button
+        // changing status button
         const taskButton = document.createElement('button');
         taskButton.className = 'todo-task_status todo-task_status_button-change';
         taskButton.innerText = 'change status';
 
-        //events
-        taskButton.addEventListener('click',(event) => {
+        // close button
+        const closeButton = document.createElement('button');
+        closeButton.className = 'todo-task_close-button';
+        closeButton.innerText = 'x';
+
+
+        // events
+        taskButton.addEventListener('click', (event) => {
             let elem = event.target.parentNode.querySelector('.todo-task_check-status-form');
-             if(!event.target.parentNode.contains(elem)) {
-                 createChangingStatusForm(event.target.parentNode);
-             }
+            if (!event.target.parentNode.contains(elem)) {
+                createChangingStatusForm(event.target.parentNode);
+            }
+        })
+        closeButton.addEventListener('click', () => {
+            updater.delete(id);
         })
 
-          taskNode.appendChild(taskName);
-          taskNode.appendChild(wrapperRow);
-          wrapperRow.appendChild(taskDesc);
-          wrapperRow.appendChild(taskButton);
-      }
+        taskNode.appendChild(taskName);
+        taskNode.appendChild(wrapperRow);
+        wrapperRow.appendChild(taskDesc);
+        wrapperRow.appendChild(taskButton);
+        wrapperRow.appendChild(closeButton);
+    }
 
     //export
     window.TaskComponent = TaskComponent;

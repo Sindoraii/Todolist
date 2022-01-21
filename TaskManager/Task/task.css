@@ -6,7 +6,6 @@
 input[type="radio"] {
     margin-right: 3px;
 }
-
 .todo-task {
     display: flex;
     flex-direction: column;
@@ -29,8 +28,6 @@ input[type="radio"] {
 .todo-task_wrapper{
     display: flex;
     flex-direction: row;
-
-
 }
 .todo-task_status {
     min-width: 3em;
@@ -65,6 +62,7 @@ input[type="radio"] {
 .todo-task_check-status-form > input {
     margin: 0 8px 2px 0;
 }
-
-
-
+.todo-task_close-button {
+    padding: 8px;
+    margin: 8px;
+}
