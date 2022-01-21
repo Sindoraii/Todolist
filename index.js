@@ -1,14 +1,18 @@
 //import
-/*let CommonComponent = window.CommonComponent;
+const listComponent = window.ListComponent;
+const dataSource = window.DataSource;
+const formComponent = window.FormComponent;
 
-let body = document.querySelector('body');
-let root = document.createElement('div');
-root.className = 'root';
+// init stub data
+const stubData = [
+    { title: 'header1', description:'Comment1', status: 'in-progress'},
+    { title: 'header2',  description:'Comment2', status: 'failed'},
+    { title: 'header3',  description:'Comment3', status: 'success'}
+];
 
-CommonComponent.mount(body,root); без общего компонента
-CommonComponent.unmount(root);
-*/
-
-
-
-
+// init SPA
+const root = document.getElementById('root');
+formComponent.mount(root);
+dataSource.subscribe(listComponent.update);
+dataSource.update(stubData);
+listComponent.mount(root);
