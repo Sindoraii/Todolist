@@ -2,27 +2,24 @@
     function DataSourse() {
         //public methods
         function subscribe(listener) {
-            this.liseners.push(listener);
+            this.listeners.push(listener);
         }
 
+        /**
+         * @param data - Array<{title, description, status}>
+         *     */
         function update(data) {
-            if(data.hasOwnProperty('header') && data.hasOwnProperty('description')) {
+            if(data && Array.isArray(data)) {
                 this.data = data;
-                let propsValue = [];
-
-                for(const prop in data) {
-                    propsValue.push(data[prop]);
-                }
-                this.liseners.forEach((lisener) => {
-                    lisener(propsValue);
+                this.listeners.forEach(listener => {
+                    listener(this.data);
                 })
-
-
             } else {
-                console.error('DataSource: data is incorrect');
+                console.error('DataSource: Data is not correct.');
             }
         }
-        this.liseners = [];
+
+        this.listeners = [];
         this.subscribe = subscribe.bind(this);
         this.update = update.bind(this);
     }

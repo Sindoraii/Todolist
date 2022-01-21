@@ -1,5 +1,5 @@
 (function () {
-      function TaskComponent(header,description) {
+      function TaskComponent(header,description, status) {
         //parent for elements of task
         let taskNode =  document.createElement('div');
         taskNode.className = 'todo-task';

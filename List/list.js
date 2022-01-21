@@ -4,13 +4,12 @@
 
     function ListComponent() {
         function update (dataArray) {
-            let header = dataArray[0];
-            let status = dataArray[1];
-            let desc = dataArray[2];
-
-            let task = new TaskComponent(header,status,desc);
-            task.mountTask(listNode);
-            }
+            dataArray.forEach((taskData) => {
+                const {title, description, status} = taskData;
+                let task = new TaskComponent(title,description,status);
+                task.mountTask(listNode);
+            })
+        }
 
        function mount(parent) {
             if (listNode.hasChildNodes() === true) {
