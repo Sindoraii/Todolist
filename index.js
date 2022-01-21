@@ -1,7 +1,7 @@
 //import
 const listComponent = window.ListComponent;
-const DataSourse = window.DataSourse;
-const FormComponent = window.FormComponent;
+const dataSource = window.DataSource;
+const formComponent = window.FormComponent;
 
 // init stub data
 const stubData = [
@@ -12,7 +12,7 @@ const stubData = [
 
 // init SPA
 const root = document.getElementById('root');
-FormComponent.mount(root);
-DataSourse.subscribe(listComponent.update);
-DataSourse.update(stubData);
+formComponent.mount(root);
+dataSource.subscribe(listComponent.update);
+dataSource.update(stubData);
 listComponent.mount(root);

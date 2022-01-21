@@ -1,4 +1,7 @@
 (function(){
+    // import
+    const dataSourceAdapter = window.DataSourceAdapter;
+
     function FormComponent() {
         //public methods
         function mount(parent) {
@@ -18,16 +21,15 @@
             }
         }
 
-       /* function readingData() {
-
+        function onSubmit(event) {
+            event.preventDefault();
+            const taskName = event.target.taskName.value;
+            const taskDesc = event.target.description.value;
+            adapter.adaptTask(taskName, taskDesc);
         }
 
-        function update(readingData()) {
-
-        }*/
-
         //structure of component
-        const elem = document.createElement('div');
+        const elem = document.createElement('form');
         elem.className = 'todo-form';
         let parentElem = null;
 
@@ -40,6 +42,7 @@
         taskName.type = 'text';
         taskName.className = 'todo-form_input';
         taskName.id = 'taskName';
+        taskName.name = 'taskName';
 
         const labelForTaskName = document.createElement('label');
         labelForTaskName.innerText = 'Task name:';
@@ -51,6 +54,7 @@
         taskDescription.placeholder = 'Add comment...';
         taskDescription.className = 'todo-form_description';
         taskDescription.id = 'description';
+        taskDescription.name = 'description';
 
         const descLabel = document.createElement('label');
         descLabel.innerText = 'Description:';
@@ -68,11 +72,15 @@
         elem.appendChild(taskDescription);
         elem.appendChild(submitButton);
 
+        elem.addEventListener('submit',onSubmit);
 
-        //publish methods
+        // init private fields
+        const adapter = dataSourceAdapter;
+
+        // publish methods
         this.mount = mount.bind(this);
         this.unmount = unmount.bind(this);
     }
-    //export
+    // export
     window.FormComponent = new FormComponent();
 })()

@@ -4,6 +4,7 @@
 
     function ListComponent() {
         function update (dataArray) {
+            listNode.textContent = '';
             dataArray.forEach((taskData) => {
                 const {title, description, status} = taskData;
                 let task = new TaskComponent(title,description,status);
