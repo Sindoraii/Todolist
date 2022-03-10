@@ -22,16 +22,28 @@ input[type="radio"] {
     margin: 11px 0 11px 0;
 }
 .todo-task_header {
+    position: relative;
     padding: 8px;
     flex-basis: 100%;
     font-size: 24px;
 }
+.todo-task-header_button-edit{
+    position: absolute;
+    top: 10px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-image: url("icons8-edit.svg");
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .todo-task_wrapper{
     display: flex;
     flex-direction: row;
-
-
 }
+
 .todo-task_status {
     min-width: 3em;
     border: 1px solid black;

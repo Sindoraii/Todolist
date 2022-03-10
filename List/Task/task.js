@@ -1,4 +1,7 @@
 (function () {
+    //import
+    const editModalTask = window.EditModalTask;
+
       function TaskComponent(header,description, status) {
         //parent for elements of task
         let taskNode =  document.createElement('div');
@@ -68,6 +71,9 @@
            taskName.innerText = this.taskName;
         }
 
+        //edit icon
+        let editButton = document.createElement('button');
+          editButton.className = 'todo-task-header_button-edit';
 
         //wrapper with task content
         const wrapperRow = document.createElement('div');
@@ -117,11 +123,17 @@
                  createChangingStatusForm(event.target.parentNode);
              }
         })
+          editButton.addEventListener('click',(event)=>{
+              event.stopPropagation();
+              editModalTask.mount(root);
+          })
 
           taskNode.appendChild(taskName);
+          taskName.appendChild(editButton);
           taskNode.appendChild(wrapperRow);
           wrapperRow.appendChild(taskDesc);
           wrapperRow.appendChild(taskButton);
+
       }
 
     //export

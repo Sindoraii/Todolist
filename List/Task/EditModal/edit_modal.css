@@ -1,0 +1,46 @@
+*, :before,:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.todo-editModal {
+    position: absolute;
+    top:120px;
+    left: 550px;
+    min-width: 30em;
+    min-height: 15em;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+.todo-editModal_header {
+    font-size: 28px;
+    padding: 8px;
+    text-align: center;
+}
+.todo-editModal_button {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+.todo-editModal_button-close {
+    background-image: url("icons8-close.svg");
+    left:94%
+}
+.todo-editModal_button-confirm {
+    position: absolute;
+    font-size: 14px;
+    border: 1px solid black;
+    width: 64px;
+    cursor: pointer;
+    padding: 8px;
+    left:84%;
+    top:82%;
+}
+.todo-editModal_button-confirm:hover {
+    background-color: lightblue;
+}
