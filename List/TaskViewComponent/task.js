@@ -1,48 +1,51 @@
 (function () {
     //import
-    const editModalTask = window.EditModalTask;
+    const modalManager = window.ModalManager;
 
-      function TaskComponent(header,description, status) {
+    function TaskViewComponent(header, description, status, id) {
         //parent for elements of task
-        let taskNode =  document.createElement('div');
+        let taskNode = document.createElement('div');
         taskNode.className = 'todo-task';
+        taskNode.id = id;
 
         let parentElem = null;
+
         //private methods
 
-          function createInputRadio(name,value, parent) {
-              if (parent instanceof HTMLElement && typeof value === 'string') {
-                  //input
-                  let radio = document.createElement('input');
-                  radio.type = 'radio';
-                  radio.name = name;
-                  radio.id = value;
-                  //label
-                  let label = document.createElement('label');
-                  label.setAttribute('for',radio.id);
-                  label.innerText = value;
-                  //wrapper
-                  const wrapper = document.createElement('div');
-                  wrapper.className = 'todo-task_wrapper';
+        function createInputRadio(name, value, parent) {
+            if (parent instanceof HTMLElement && typeof value === 'string') {
+                //input
+                let radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = name;
+                radio.id = value;
+                //label
+                let label = document.createElement('label');
+                label.setAttribute('for', radio.id);
+                label.innerText = value;
+                //wrapper
+                const wrapper = document.createElement('div');
+                wrapper.className = 'todo-task_wrapper';
 
-                  wrapper.appendChild(radio);
-                  wrapper.appendChild(label);
-                  parent.appendChild(wrapper);
+                wrapper.appendChild(radio);
+                wrapper.appendChild(label);
+                parent.appendChild(wrapper);
 
-              } else {
-                  console.error("TaskComponent: arguments is not correct type");
-              }
-          }
-          function createChangingStatusForm(parent) {
-              let form = document.createElement('div');
-              form.className = 'todo-task_check-status-form';
+            } else {
+                console.error("TaskComponent: arguments is not correct type");
+            }
+        }
 
-              createInputRadio('status','failed',form);
-              createInputRadio('status', 'in-progress',form);
-              createInputRadio('status','success',form);
-              parent.appendChild(form);
+        function createChangingStatusForm(parent) {
+            let form = document.createElement('div');
+            form.className = 'todo-task_check-status-form';
 
-          }
+            createInputRadio('status', 'failed', form);
+            createInputRadio('status', 'in-progress', form);
+            createInputRadio('status', 'success', form);
+            parent.appendChild(form);
+
+        }
 
         //public methods
         this.mountTask = function (parent) {
@@ -68,12 +71,12 @@
         taskName.innerText = 'New task';
         taskName.className = 'todo-task_header';
         if (this.taskName) {
-           taskName.innerText = this.taskName;
+            taskName.innerText = this.taskName;
         }
 
         //edit icon
         let editButton = document.createElement('button');
-          editButton.className = 'todo-task-header_button-edit';
+        editButton.className = 'todo-task-header_button-edit';
 
         //wrapper with task content
         const wrapperRow = document.createElement('div');
@@ -117,25 +120,27 @@
         taskButton.innerText = 'change status';
 
         //events
-        taskButton.addEventListener('click',(event) => {
+        taskButton.addEventListener('click', (event) => {
             let elem = event.target.parentNode.querySelector('.todo-task_check-status-form');
-             if(!event.target.parentNode.contains(elem)) {
-                 createChangingStatusForm(event.target.parentNode);
-             }
+            if (!event.target.parentNode.contains(elem)) {
+                createChangingStatusForm(event.target.parentNode);
+            }
         })
-          editButton.addEventListener('click',(event)=>{
-              event.stopPropagation();
-              editModalTask.mount(root);
-          })
+        editButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const parent = event.target.closest('.todo-task');
+            modalManager.open('edit', parent.id);
 
-          taskNode.appendChild(taskName);
-          taskName.appendChild(editButton);
-          taskNode.appendChild(wrapperRow);
-          wrapperRow.appendChild(taskDesc);
-          wrapperRow.appendChild(taskButton);
+        })
 
-      }
+        taskNode.appendChild(taskName);
+        taskName.appendChild(editButton);
+        taskNode.appendChild(wrapperRow);
+        wrapperRow.appendChild(taskDesc);
+        wrapperRow.appendChild(taskButton);
+    }
 
     //export
-    window.TaskComponent = TaskComponent;
+    window.TaskViewComponent = TaskViewComponent;
+
 })()

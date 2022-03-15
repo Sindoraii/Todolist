@@ -1,18 +1,18 @@
-(function (){
+(function () {
     //import
-    const TaskComponent = window.TaskComponent;
+    const TaskViewComponent = window.TaskViewComponent;
 
     function ListComponent() {
-        function update (dataArray) {
+        function update(dataArray) {
             listNode.textContent = '';
             dataArray.forEach((taskData) => {
-                const {title, description, status} = taskData;
-                let task = new TaskComponent(title,description,status);
+                const {title, description, status, id} = taskData;
+                let task = new TaskViewComponent(title, description, status, id);
                 task.mountTask(listNode);
             })
         }
 
-       function mount(parent) {
+        function mount(parent) {
             if (listNode.hasChildNodes() === true) {
                 if (parent instanceof HTMLElement) {
                     parentElem = parent;
@@ -20,12 +20,12 @@
                 } else {
                     console.error("ListComponent: this parent is not correct type");
                 }
-            }else {
+            } else {
                 console.error('ListComponent: List has not task');
             }
         }
 
-        function unmount (parent) {
+        function unmount(parent) {
             if (parent === parentElem) {
                 listNode.remove();
             } else {
@@ -42,6 +42,7 @@
         this.mount = mount.bind(this);
         this.unmount = unmount.bind(this);
     }
+
     //export
     window.ListComponent = new ListComponent();
 })()

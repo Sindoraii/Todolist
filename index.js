@@ -2,14 +2,12 @@
 const listComponent = window.ListComponent;
 const dataSource = window.DataSource;
 const formComponent = window.FormComponent;
-// const editModalTask = window.EditModalTask;
-
 
 // init stub data
 const stubData = [
-    { title: 'header1', description:'Comment1', status: 'in-progress'},
-    { title: 'header2',  description:'Comment2', status: 'failed'},
-    { title: 'header3',  description:'Comment3', status: 'success'}
+    {title: 'header1', description: 'Comment1', status: 'in-progress', id: '111'},
+    {title: 'header2', description: 'Comment2', status: 'failed', id: '222'},
+    {title: 'header3', description: 'Comment3', status: 'success'}
 ];
 
 // init SPA
@@ -18,4 +16,3 @@ formComponent.mount(root);
 dataSource.subscribe(listComponent.update);
 dataSource.update(stubData);
 listComponent.mount(root);
-// editModalTask.mount(root);

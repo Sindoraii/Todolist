@@ -44,3 +44,32 @@
 .todo-editModal_button-confirm:hover {
     background-color: lightblue;
 }
+.task-data {
+    display: flex;
+    padding: 8px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.task-data__wrap-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.task-data__input {
+    margin: 8px;
+    padding: 4px;
+    min-width: 184px;
+}
+.task-data__textarea {
+    resize: none;
+    margin: 8px;
+    padding: 4px;
+    font-family: sans-serif;
+    overflow: auto;
+    min-width: 184px;
+}
+.task-data__label {
+    min-width: 88px;
+}
