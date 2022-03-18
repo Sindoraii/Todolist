@@ -1,6 +1,6 @@
 (function () {
 
-    function EditModalTask() {
+    function EditModalTask(callback) {
         //init
         const elem = document.createElement('div');
         elem.className = 'todo-editModal';
@@ -66,29 +66,26 @@
             }
         })
 
-        //public methods
-         function mount (parent) {
-            if(parent && parent instanceof HTMLElement){
-                parentElem = parent;
-                parentElem.appendChild(elem);
+        confirmButton.onclick = callback(taskName,taskDesc);
 
-            } else {
-                console.error('EditModal: This parent is`t correct');
+        this.mount  = (parent) => {
+                if(parent && parent instanceof HTMLElement){
+                    parentElem = parent;
+                    parentElem.appendChild(elem);
+
+                } else {
+                    console.error('EditModal: This parent is`t correct');
+                }
             }
-        }
-
-        function set(elemTask) {
-            if(typeof elemTask === 'object') {
-                taskName.value = elemTask.title;
-                taskDesc.value = elemTask.description;
-            } else {
-                console.error('EditModal: Type of task is not correct');
+        this.set = (taskData) => {
+                if(typeof taskData === 'object') {
+                    const taskDataForEditing = JSON.parse(JSON.stringify(taskData));
+                    taskName.value = taskDataForEditing.title;
+                    taskDesc.value = taskDataForEditing.description;
+                } else {
+                    console.error('EditModal: Type of task is not correct');
+                }
             }
-        }
-
-        //publish methods
-        this.mount = mount.bind(this);
-        this.set = set.bind(this);
 
         elem.appendChild(headerOfModal);
         headerOfModal.appendChild(closeButton);
@@ -102,9 +99,7 @@
         taskData.appendChild(wrapperRow_2);
         wrapperRow_2.appendChild(taskDescLabel);
         wrapperRow_2.appendChild(taskDesc);
-
-
     }
     //export
-    window.EditModalTask = new EditModalTask();
+    window.EditModalTask =  EditModalTask;
 })()

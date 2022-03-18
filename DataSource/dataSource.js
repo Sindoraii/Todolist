@@ -7,11 +7,12 @@
             this.listeners.push(listener);
         }
         /**
-         * @param data - Array<{title, description, status: open | inProgress | complete | decline", id}>
+         * @param data  {Array} <{title, description, status: open | inProgress | complete | decline", id}>
          *     */
         function update(data) {
             if (data && Array.isArray(data)) {
                 this.data = data;
+                console.log('data',this.data);
 
                 //give ID to task
 
@@ -30,7 +31,7 @@
             }
         }
         /**
-         * @param task - {title, description, status,id}*/
+         * @param task {object} <title, description, status,id>*/
         function addTask(task) {
             if (task && typeof task === 'object') {
                 const newData = [...this.data];
@@ -56,6 +57,15 @@
             }
             return elemById;
         }
+
+        // /***
+        //  *
+        //  * @param newData {Object}
+        //  * @param id {string}
+        //  */
+        // function updateTaskById(newData,id) {
+        //
+        // }
         /**
          * @param dataArray  {Array} <{title, description, status: open | inProgress | complete | decline",id}>
          *     */
@@ -75,6 +85,7 @@
         this.update = update.bind(this);
         this.addTask = addTask.bind(this);
         this.getDataElemById = getDataElemById.bind(this);
+        // this.updateTaskById = updateTaskById.bind(this);
     }
 
     //export
