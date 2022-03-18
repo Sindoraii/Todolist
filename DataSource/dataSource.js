@@ -12,7 +12,6 @@
         function update(data) {
             if (data && Array.isArray(data)) {
                 this.data = data;
-                console.log('data',this.data);
 
                 //give ID to task
 
@@ -58,14 +57,20 @@
             return elemById;
         }
 
-        // /***
-        //  *
-        //  * @param newData {Object}
-        //  * @param id {string}
-        //  */
-        // function updateTaskById(newData,id) {
-        //
-        // }
+        /***
+         *
+         * @param newData {Object}
+         * @param idTask {string}
+         */
+        function updateDataElemById(newData,idTask) {
+            let elem = dataSource.getDataElemById(idTask);
+            for(let prop in elem) {
+                elem[prop] = newData[prop];
+            }
+            this.update(savedData);
+
+        }
+
         /**
          * @param dataArray  {Array} <{title, description, status: open | inProgress | complete | decline",id}>
          *     */
@@ -85,7 +90,7 @@
         this.update = update.bind(this);
         this.addTask = addTask.bind(this);
         this.getDataElemById = getDataElemById.bind(this);
-        // this.updateTaskById = updateTaskById.bind(this);
+        this.updateDataElemById = updateDataElemById.bind(this);
     }
 
     //export

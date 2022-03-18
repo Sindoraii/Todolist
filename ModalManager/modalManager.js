@@ -43,7 +43,6 @@
          * @param taskName {string} - field of EditModal
          * @param taskDesc {string} - field of EditModal
          */
-
         function send(taskName,taskDesc) {
             return function () {
                 const task = dataSource.getDataElemById(id);
@@ -55,10 +54,8 @@
                     newData.description = taskDesc.value;
                     newData[prop] = copyTask[prop];
                 }
-                console.log('new',newData);
-                // TODO to call task update  from DS
+                dataSource.updateDataElemById(newData,id)
             }
-
         }
 
         //publish methods
