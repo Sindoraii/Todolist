@@ -4,7 +4,7 @@
 
     function TaskViewComponent(header, description, status, id) {
         //parent for elements of task
-        let taskNode = document.createElement('div');
+        let taskNode = document.createElement('article');
         taskNode.className = 'todo-task';
         taskNode.id = id;
 
@@ -40,14 +40,15 @@
             let form = document.createElement('div');
             form.className = 'todo-task_check-status-form';
 
-            createInputRadio('status', 'failed', form);
+            createInputRadio('status', 'open', form);
             createInputRadio('status', 'in-progress', form);
-            createInputRadio('status', 'success', form);
+            createInputRadio('status', 'complete', form);
+            createInputRadio('status', 'decline', form);
             parent.appendChild(form);
-
         }
 
         //public methods
+
         this.mountTask = function (parent) {
             if (parent instanceof HTMLElement) {
                 parentElem = parent;
@@ -67,9 +68,12 @@
 
         //header
         this.taskName = header;
-        let taskName = document.createElement('div');
+        let taskNameHeader = document.createElement('header');
+        taskNameHeader.className = 'todo-task_header';
+
+        let taskName = document.createElement('h3');
         taskName.innerText = 'New task';
-        taskName.className = 'todo-task_header';
+        taskName.className = 'todo-task_header-h3';
         if (this.taskName) {
             taskName.innerText = this.taskName;
         }
@@ -81,7 +85,6 @@
         //wrapper with task content
         const wrapperRow = document.createElement('div');
         wrapperRow.className = 'todo-task_wrapper';
-
 
         //status
         /*let status;
@@ -133,8 +136,9 @@
 
         })
 
-        taskNode.appendChild(taskName);
-        taskName.appendChild(editButton);
+        taskNode.appendChild(taskNameHeader);
+        taskNameHeader.appendChild(taskName);
+        taskNameHeader.appendChild(editButton);
         taskNode.appendChild(wrapperRow);
         wrapperRow.appendChild(taskDesc);
         wrapperRow.appendChild(taskButton);

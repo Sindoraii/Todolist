@@ -6,7 +6,6 @@
 input[type="radio"] {
     margin-right: 3px;
 }
-
 .todo-task {
     display: flex;
     flex-direction: column;
@@ -25,7 +24,9 @@ input[type="radio"] {
     position: relative;
     padding: 8px;
     flex-basis: 100%;
-    font-size: 24px;
+}
+.todo-task_header-h3 {
+    font-weight: initial;
 }
 .todo-task-header_button-edit{
     position: absolute;
@@ -38,12 +39,10 @@ input[type="radio"] {
     border: none;
     cursor: pointer;
 }
-
 .todo-task_wrapper{
     display: flex;
     flex-direction: row;
 }
-
 .todo-task_status {
     min-width: 3em;
     border: 1px solid black;

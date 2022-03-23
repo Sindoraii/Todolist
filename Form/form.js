@@ -34,8 +34,8 @@
         let parentElem = null;
 
         // elements of component
-        const formHead = document.createElement('div');
-        formHead.className = 'todo-form_header';
+        const formHead = document.createElement('h2');
+        formHead.className = 'todo-form_header-h2';
         formHead.innerText = 'Task form';
 
         const taskName = document.createElement('input');

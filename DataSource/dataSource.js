@@ -72,7 +72,7 @@
         }
 
         /**
-         * @param dataArray  {Array} <{title, description, status: open | inProgress | complete | decline",id}>
+         * @param dataArray  {Array} <{title, description, status: open | in-progress | complete | decline",id}>
          *     */
         //private method //TODO !SRP
         function saveData(dataArray) {

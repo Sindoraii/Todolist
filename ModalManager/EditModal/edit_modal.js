@@ -1,10 +1,8 @@
 (function () {
-
     function EditModalTask(callback) {
         //init
-        const elem = document.createElement('div');
+        const elem = document.createElement('section');
         elem.className = 'todo-editModal';
-
         let parentElem = null;
 
         //close button
@@ -18,13 +16,14 @@
 
         //header
         const headerOfModal = document.createElement('header');
-        headerOfModal.innerText = 'Task editing';
+        const h2OfHeader = document.createElement('h2');
+        h2OfHeader.innerText = 'Task editing';
+        h2OfHeader.className = 'todo-editModal_header-h2';
         headerOfModal.className = 'todo-editModal_header';
 
         //section for inputs
-        const taskData = document.createElement('section');
+        const taskData = document.createElement('article');
         taskData.className = 'task-data';
-
 
         // inputs
         const taskName = document.createElement('input');
@@ -50,10 +49,8 @@
         //wrapper
         const wrapperRow_1 = document.createElement('div');
         wrapperRow_1.className = 'task-data__wrap-row';
-
         const wrapperRow_2  = document.createElement('div');
         wrapperRow_2.className = 'task-data__wrap-row';
-
 
         //events
         closeButton.addEventListener('click', (event) => {
@@ -88,6 +85,7 @@
             }
 
         elem.appendChild(headerOfModal);
+        headerOfModal.appendChild(h2OfHeader);
         headerOfModal.appendChild(closeButton);
         elem.appendChild(confirmButton);
         elem.appendChild(taskData);

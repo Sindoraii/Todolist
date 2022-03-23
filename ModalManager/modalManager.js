@@ -4,12 +4,12 @@
     const dataSource = window.DataSource;
 
     function ModalManager() {
-        const elem = document.createElement('div');
+        const elem = document.createElement('section');
         elem.className = 'todo-modals';
         //instance of EditModal
         const editModal  = new EditModalTask(send);
+        let id = null;
 
-    let id = null
         //public methods
         /**
          * @param typeModalComp {string}<to look values in cases of .getModule() >

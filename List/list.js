@@ -33,7 +33,7 @@
             }
         }
 
-        const listNode = document.createElement('div');
+        const listNode = document.createElement('section');
         listNode.className = "todo-list";
 
         let parentElem = null;

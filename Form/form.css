@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
 }
-
 .todo-form {
     display: flex;
     flex-direction: column;
@@ -13,12 +12,11 @@
     min-height: 10em;
     margin: 8px 8px 16px 8px;
 }
-.todo-form_header{
+.todo-form_header-h2{
     align-self: center;
-    font-size: 28px;
-    margin: 8px;
+    padding: 8px;
+    font-weight: initial;
 }
-
 .todo-form_label{
     margin:  0 8px ;
 }

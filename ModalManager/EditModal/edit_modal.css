@@ -4,7 +4,7 @@
     padding: 0;
 }
 .todo-editModal {
-    position: absolute;
+    position: fixed;
     top:120px;
     left: 550px;
     min-width: 30em;
@@ -14,9 +14,12 @@
     flex-direction: column;
 }
 .todo-editModal_header {
-    font-size: 28px;
+    font-weight: initial;
     padding: 8px;
     text-align: center;
+}
+.todo-editModal_header-h2 {
+    font-weight: initial;
 }
 .todo-editModal_button {
     position: absolute;
@@ -25,11 +28,11 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-
 }
 .todo-editModal_button-close {
     background-image: url("icons8-close.svg");
-    left:94%
+    left:94%;
+    top: 3%;
 }
 .todo-editModal_button-confirm {
     position: absolute;
@@ -55,7 +58,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-
 }
 .task-data__input {
     margin: 8px;
