@@ -1,10 +1,15 @@
 (function () {
-    //import
+    /* import */
     const TaskViewComponent = window.TaskViewComponent;
 
     function ListComponent() {
+        /**
+         *  Updating list
+         *  @param {Array} dataArray - <[{title, description, status: open | in-progress | complete | decline",id}]>
+         * */
         function update(dataArray) {
             listNode.textContent = '';
+
             dataArray.forEach((taskData) => {
                 const {title, description, status, id} = taskData;
                 let task = new TaskViewComponent(title, description, status, id);
@@ -33,16 +38,19 @@
             }
         }
 
+        /* init list instance */
         const listNode = document.createElement('section');
         listNode.className = "todo-list";
-
         let parentElem = null;
 
+
+        /* PUBLISH METHODS */
         this.update = update.bind(this);
         this.mount = mount.bind(this);
         this.unmount = unmount.bind(this);
     }
 
-    //export
+
+    /* export */
     window.ListComponent = new ListComponent();
 })()

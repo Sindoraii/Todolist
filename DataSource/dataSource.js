@@ -1,8 +1,5 @@
 (function () {
     function DataSource() {
-        /* initial elem */
-        let savedData = null;
-
         /* PUBLIC METHODS */
         function subscribe(listener) {
             this.listeners.push(listener);
@@ -76,11 +73,12 @@
 
         }
 
+
+        /*PRIVATE METHOD */
         /**
          * Setting data to initial elem
          * @param  {Array} dataArray - <{title, description, status: open | in-progress | complete | decline",id}>
          */
-        /*PRIVATE METHOD */
         function set(dataArray) {
             if (Array.isArray(dataArray) && dataArray.length !== 0) {
                 savedData = dataArray;
@@ -90,9 +88,13 @@
             }
         }
 
-
+        /* init */
+        let savedData = null;
         this.data = [];
         this.listeners = [];
+
+
+        /* PUBLISH METHODS */
         this.subscribe = subscribe.bind(this);
         this.update = update.bind(this);
         this.addTask = addTask.bind(this);

@@ -1,19 +1,23 @@
 (function () {
-    //import
+    /* import */
     const EditModalTask = window.EditModalTask;
     const dataSource = window.DataSource;
 
+    /**
+     * Creating common box for managing modals.
+     */
     function ModalManager() {
+        /* init */
         const elem = document.createElement('section');
         elem.className = 'todo-modals';
-        //instance of EditModal
-        const editModal  = new EditModalTask(send);
+        const editModal  = new EditModalTask(send); //instance of EditModal
         let id = null;
 
-        //public methods
+
+        /* PUBLIC METHODS */
         /**
-         * @param typeModalComp {string}<to look values in cases of .getModule() >
-         * @param idTask {string}
+         * @param {string} typeModalComp  - to look values in cases of .getModule()
+         * @param {string} idTask
          * */
         function open(typeModalComp, idTask) {
             if (typeof idTask === 'string' && typeof typeModalComp === 'string') {
@@ -37,11 +41,11 @@
             }
         }
 
-        //private methods
+        /* PRIVATE METHODS */
         /***
-         *
-         * @param taskName {string} - field of EditModal
-         * @param taskDesc {string} - field of EditModal
+         * Updating task data in List
+         * @param {string} taskName - field of EditModal
+         * @param {string} taskDesc - field of EditModal
          */
         function send(taskName,taskDesc) {
             return function () {
@@ -58,9 +62,12 @@
             }
         }
 
-        //publish methods
+
+        /* PUBLISH METHODS */
         this.open = open.bind(this);
     }
-    //export
+
+
+    /* export */
     window.ModalManager = new ModalManager();
 })()

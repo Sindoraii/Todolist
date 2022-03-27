@@ -1,31 +1,32 @@
 (function () {
+
     function EditModalTask(callback) {
-        //init
+        /* init */
         const elem = document.createElement('section');
         elem.className = 'todo-editModal';
         let parentElem = null;
 
-        //close button
+        /* close button */
         const closeButton = document.createElement('button');
         closeButton.className = 'todo-editModal_button todo-editModal_button-close';
 
-        //confirmation button
+        /* confirmation button */
         const confirmButton = document.createElement('button');
         confirmButton.className = 'todo-editModal_button-confirm';
         confirmButton.innerText = 'OK';
 
-        //header
+        /* header */
         const headerOfModal = document.createElement('header');
         const h2OfHeader = document.createElement('h2');
         h2OfHeader.innerText = 'Task editing';
         h2OfHeader.className = 'todo-editModal_header-h2';
         headerOfModal.className = 'todo-editModal_header';
 
-        //section for inputs
+        /* section for inputs */
         const taskData = document.createElement('article');
         taskData.className = 'task-data';
 
-        // inputs
+        /* inputs */
         const taskName = document.createElement('input');
         taskName.className = 'task-data__input';
         taskName.id = 'data-task-name';
@@ -35,7 +36,7 @@
         taskDesc.placeholder = 'Add comment...';
         taskDesc.id = 'data-task-desc';
 
-        //labels
+        /* labels */
         const taskNameLabel = document.createElement('label');
         taskNameLabel.innerText = 'Task name:';
         taskNameLabel.setAttribute('for',taskName.id);
@@ -46,13 +47,13 @@
         taskDescLabel.setAttribute('for',taskDesc.id);
         taskDescLabel.className = 'task-data__label';
 
-        //wrapper
+        /* wrapper */
         const wrapperRow_1 = document.createElement('div');
         wrapperRow_1.className = 'task-data__wrap-row';
         const wrapperRow_2  = document.createElement('div');
         wrapperRow_2.className = 'task-data__wrap-row';
 
-        //events
+        /* events */
         closeButton.addEventListener('click', (event) => {
             elem.remove();
         });
@@ -65,6 +66,8 @@
 
         confirmButton.onclick = callback(taskName,taskDesc);
 
+
+        /* PUBLIC METHODS */
         this.mount  = (parent) => {
                 if(parent && parent instanceof HTMLElement){
                     parentElem = parent;
@@ -74,6 +77,7 @@
                     console.error('EditModal: This parent is`t correct');
                 }
             }
+
         this.set = (taskData) => {
                 if(typeof taskData === 'object') {
                     const taskDataForEditing = JSON.parse(JSON.stringify(taskData));
@@ -84,20 +88,20 @@
                 }
             }
 
+
         elem.appendChild(headerOfModal);
         headerOfModal.appendChild(h2OfHeader);
         headerOfModal.appendChild(closeButton);
         elem.appendChild(confirmButton);
         elem.appendChild(taskData);
-
         taskData.appendChild(wrapperRow_1);
         wrapperRow_1.appendChild(taskNameLabel);
         wrapperRow_1.appendChild(taskName);
-
         taskData.appendChild(wrapperRow_2);
         wrapperRow_2.appendChild(taskDescLabel);
         wrapperRow_2.appendChild(taskDesc);
     }
-    //export
+
+    /* export */
     window.EditModalTask =  EditModalTask;
 })()
