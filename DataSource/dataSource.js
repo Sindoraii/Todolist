@@ -1,36 +1,39 @@
 (function () {
     function DataSource() {
+        /* initial elem */
         let savedData = null;
 
-        //public methods
+        /* PUBLIC METHODS */
         function subscribe(listener) {
             this.listeners.push(listener);
         }
+
         /**
-         * @param data  {Array} <{title, description, status: open | inProgress | complete | decline", id}>
-         *     */
-        function update(data) {
-            if (data && Array.isArray(data)) {
-                this.data = data;
+         * Updating listeners
+         * @param {Array} tasks -  <{title, description, status: open | inProgress | complete | decline", id}>>
+         **/
+        function update(tasks) {
+            if (tasks && Array.isArray(tasks)) {
+                this.tasks = tasks;
 
-                //give ID to task
-
-                this.data.forEach((obj) => {
-                    if (!obj.id) {
-                        obj.id = String(Date.now());
+                /* give ID to task */
+                this.tasks.forEach((task) => {
+                    if (!task.id) {
+                        task.id = String(Date.now());
                     }
                 });
-                saveData(this.data);
-
+                set(this.tasks);
                 this.listeners.forEach(listener => {
-                    listener(this.data);
+                    listener(this.tasks);
                 });
             } else {
                 console.error('DataSource: Data is not correct.');
             }
         }
+
         /**
-         * @param task {object} <title, description, status,id>*/
+         * Task format adaptation
+         * @param {object} task - <title, description, status,id>*/
         function addTask(task) {
             if (task && typeof task === 'object') {
                 const newData = [...this.data];
@@ -40,8 +43,10 @@
                 console.error('DataSource: Data is not correct.');
             }
         }
+
         /**
-         * @param id {string}
+         * Getting a task from the initial elem by its id
+         * @param {string} id
          * */
         function getDataElemById(id) {
             let elemById = null;
@@ -57,10 +62,10 @@
             return elemById;
         }
 
-        /***
-         *
-         * @param newData {Object}
-         * @param idTask {string}
+        /**
+         * Updating a task by its id
+         * @param {Object} newData
+         * @param {string} idTask
          */
         function updateDataElemById(newData,idTask) {
             let elem = dataSource.getDataElemById(idTask);
@@ -72,10 +77,11 @@
         }
 
         /**
-         * @param dataArray  {Array} <{title, description, status: open | in-progress | complete | decline",id}>
-         *     */
-        //private method //TODO !SRP
-        function saveData(dataArray) {
+         * Setting data to initial elem
+         * @param  {Array} dataArray - <{title, description, status: open | in-progress | complete | decline",id}>
+         */
+        /*PRIVATE METHOD */
+        function set(dataArray) {
             if (Array.isArray(dataArray) && dataArray.length !== 0) {
                 savedData = dataArray;
                 return savedData;
@@ -83,6 +89,7 @@
                 console.error('DataSource: array is empty');
             }
         }
+
 
         this.data = [];
         this.listeners = [];
@@ -93,6 +100,7 @@
         this.updateDataElemById = updateDataElemById.bind(this);
     }
 
-    //export
+
+    /* export */
     window.DataSource = new DataSource();
 })()
