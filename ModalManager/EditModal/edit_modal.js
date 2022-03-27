@@ -78,7 +78,7 @@
                 }
             }
 
-        this.set = (taskData) => {
+        this.setValuesForFields = (taskData) => {
                 if(typeof taskData === 'object') {
                     const taskDataForEditing = JSON.parse(JSON.stringify(taskData));
                     taskName.value = taskDataForEditing.title;

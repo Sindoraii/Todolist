@@ -18,10 +18,12 @@
                 radio.type = 'radio';
                 radio.name = name;
                 radio.id = value;
+
                 /* label */
                 let label = document.createElement('label');
                 label.setAttribute('for', radio.id);
                 label.innerText = value;
+
                 /* wrapper */
                 const wrapper = document.createElement('div');
                 wrapper.className = 'todo-task_wrapper';
@@ -84,7 +86,7 @@
         const wrapperRow = document.createElement('div');
         wrapperRow.className = 'todo-task_wrapper';
 
-        /* status */
+        /* TODO  to create changing status className with adding different style */
         /*let status;
         let taskStatus = document.createElement('div');
 
@@ -104,7 +106,6 @@
                 console.error("Status is not true. Choose 'success','failed' or 'in-progress'.");
                 break;
         }
-        //wrapperRow.appendChild(taskStatus);*/
 
         /* description */
         this.desc = description;
@@ -121,6 +122,8 @@
         const taskButton = document.createElement('button');
         taskButton.className = 'todo-task_status todo-task_status_button-change';
         taskButton.innerText = 'change status';
+
+
         /* events */
         taskButton.addEventListener('click', (event) => {
             let elem = event.target.parentNode.querySelector('.todo-task_check-status-form');

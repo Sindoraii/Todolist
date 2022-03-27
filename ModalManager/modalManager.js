@@ -32,7 +32,7 @@
             function getModal(typeModalComp, elemOfTask) {
                 switch (typeModalComp) {
                     case 'edit':
-                        editModal.set(elemOfTask);
+                        editModal.setValuesForFields(elemOfTask);
                         editModal.mount(elem);
                         break;
                     default:

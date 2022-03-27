@@ -19,7 +19,7 @@
                         task.id = String(Date.now());
                     }
                 });
-                set(this.tasks);
+                getCopyOfTasks(this.tasks);
                 this.listeners.forEach(listener => {
                     listener(this.tasks);
                 });
@@ -79,7 +79,7 @@
          * Setting data to initial elem
          * @param  {Array} dataArray - <{title, description, status: open | in-progress | complete | decline",id}>
          */
-        function set(dataArray) {
+        function getCopyOfTasks(dataArray) {
             if (Array.isArray(dataArray) && dataArray.length !== 0) {
                 savedData = dataArray;
                 return savedData;
