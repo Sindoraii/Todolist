@@ -41,25 +41,24 @@
             }
         }
 
+
         /* PRIVATE METHODS */
         /***
          * Updating task data in List
-         * @param {string} taskName - field of EditModal
-         * @param {string} taskDesc - field of EditModal
+         * @param {HTMLElement} taskName - elem of EditModal
+         * @param {HTMLElement} taskDesc - elem of EditModal
          */
         function send(taskName,taskDesc) {
-            return function () {
-                const task = dataSource.getDataElemById(id);
-                const copyTask = JSON.parse(JSON.stringify(task));
-                const newData = {};
+            const task = dataSource.getDataElemById(id);
+            const copyTask = JSON.parse(JSON.stringify(task));
+            const newData = {};
 
-                for(let prop in copyTask) {
-                    newData.title = taskName.value;
-                    newData.description = taskDesc.value;
-                    newData[prop] = copyTask[prop];
-                }
-                dataSource.updateDataElemById(newData,id)
+            for (let prop in copyTask) {
+                newData.title = taskName.value;
+                newData.description = taskDesc.value;
+                newData[prop] = copyTask[prop];
             }
+            dataSource.updateDataElemById(newData, id)
         }
 
 

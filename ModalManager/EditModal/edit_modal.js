@@ -54,17 +54,37 @@
         wrapperRow_2.className = 'task-data__wrap-row';
 
         /* events */
-        closeButton.addEventListener('click', (event) => {
-            elem.remove();
-        });
+        closeButton.onclick = closeEditModal;
 
         document.addEventListener('click',(event)=>{
             if(elem && !event.target.closest('.todo-editModal') ) {
-                elem.remove();
+                closeEditModal();
             }
         })
 
-        confirmButton.onclick = callback(taskName,taskDesc);
+        confirmButton.onclick = () => { onclickHandler(taskName, taskDesc)}
+
+
+        /* PRIVATE METHODS */
+        /**
+         * Handler for onclick-events
+         * @param {HTMLElement} title - input 'Task name'
+         * @param {HTMLElement} description -  textarea 'Description'
+         * */
+        function onclickHandler(title,description) {
+            stopEditing();
+            callback(title,description);
+            closeEditModal();
+
+            function stopEditing() {
+                title.setAttribute('disabled',true);
+                description.setAttribute('disabled',true);
+            }
+        }
+
+        function closeEditModal() {
+            elem.remove();
+        }
 
 
         /* PUBLIC METHODS */
