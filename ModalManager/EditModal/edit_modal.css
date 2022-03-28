@@ -34,18 +34,28 @@
     left:94%;
     top: 3%;
 }
-.todo-editModal_button-confirm {
-    position: absolute;
+.todo-editModal__footer {
+    display: flex;
+    margin:auto 8px 8px;
+    justify-content: space-between;
+
+}
+.todo-editModal__button-confirm {
     font-size: 14px;
     border: 1px solid black;
     width: 64px;
     cursor: pointer;
     padding: 8px;
-    left:84%;
-    top:82%;
 }
 .todo-editModal_button-confirm:hover {
     background-color: lightblue;
+}
+.todo-editModal__button-cansel {
+    font-size: 14px;
+    border: 1px solid black;
+    width: 64px;
+    cursor: pointer;
+    padding: 8px;
 }
 .task-data {
     display: flex;

@@ -10,11 +10,6 @@
         const closeButton = document.createElement('button');
         closeButton.className = 'todo-editModal_button todo-editModal_button-close';
 
-        /* confirmation button */
-        const confirmButton = document.createElement('button');
-        confirmButton.className = 'todo-editModal_button-confirm';
-        confirmButton.innerText = 'OK';
-
         /* header */
         const headerOfModal = document.createElement('header');
         const h2OfHeader = document.createElement('h2');
@@ -53,16 +48,30 @@
         const wrapperRow_2  = document.createElement('div');
         wrapperRow_2.className = 'task-data__wrap-row';
 
+        /* footer */
+        const footer = document.createElement('footer');
+        footer.className = 'todo-editModal__footer';
+
+        /* confirm button */
+        const confirmButton = document.createElement('button');
+        confirmButton.className = 'todo-editModal__button-confirm';
+        confirmButton.innerText = 'OK';
+
+        /* cansel button */
+        const canselButton = document.createElement('button');
+        canselButton.innerText = 'Cansel';
+        canselButton.className = 'todo-editModal__button-cansel';
+
         /* events */
         closeButton.onclick = closeEditModal;
+        confirmButton.onclick = () => { onclickHandler(taskName, taskDesc)}
+        canselButton.onclick = closeEditModal;
 
         document.addEventListener('click',(event)=>{
             if(elem && !event.target.closest('.todo-editModal') ) {
                 closeEditModal();
             }
         })
-
-        confirmButton.onclick = () => { onclickHandler(taskName, taskDesc)}
 
 
         /* PRIVATE METHODS */
@@ -72,14 +81,8 @@
          * @param {HTMLElement} description -  textarea 'Description'
          * */
         function onclickHandler(title,description) {
-            stopEditing();
             callback(title,description);
             closeEditModal();
-
-            function stopEditing() {
-                title.setAttribute('disabled',true);
-                description.setAttribute('disabled',true);
-            }
         }
 
         function closeEditModal() {
@@ -112,7 +115,6 @@
         elem.appendChild(headerOfModal);
         headerOfModal.appendChild(h2OfHeader);
         headerOfModal.appendChild(closeButton);
-        elem.appendChild(confirmButton);
         elem.appendChild(taskData);
         taskData.appendChild(wrapperRow_1);
         wrapperRow_1.appendChild(taskNameLabel);
@@ -120,6 +122,9 @@
         taskData.appendChild(wrapperRow_2);
         wrapperRow_2.appendChild(taskDescLabel);
         wrapperRow_2.appendChild(taskDesc);
+        elem.appendChild(footer);
+        footer.appendChild(canselButton);
+        footer.appendChild(confirmButton);
     }
 
     /* export */
