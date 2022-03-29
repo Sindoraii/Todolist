@@ -14,6 +14,7 @@ const stubData = [
 
 /* init SPA */
 const root = document.getElementById('root');
+const body = document.getElementsByTagName('body')[0];
 formComponent.mount(root);
 dataSource.subscribe(listComponent.update);
 dataSource.update(stubData);

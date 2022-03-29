@@ -86,7 +86,7 @@
         }
 
         function closeEditModal() {
-            elem.remove();
+            parentElem.remove();
         }
 
 

@@ -9,7 +9,11 @@
     function ModalManager() {
         /* init */
         const elem = document.createElement('section');
-        elem.className = 'todo-modals';
+        elem.className = 'todo-modals__active';
+
+        const modalsBox = document.createElement('div');
+        modalsBox.id = 'modals';
+
         const editModal  = new EditModalTask(send); //instance of EditModal
         let id = null;
 
@@ -23,7 +27,8 @@
             if (typeof idTask === 'string' && typeof typeModalComp === 'string') {
                 id = idTask;
                  let elemTaskViewComponent = dataSource.getDataElemById(idTask);
-                root.appendChild(elem);
+                 body.insertBefore(modalsBox,body.children[1]);
+                 modalsBox.appendChild(elem);
                 getModal(typeModalComp, elemTaskViewComponent);
             } else {
                 console.error('ModalManager: id is not correct');
