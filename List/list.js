@@ -18,15 +18,11 @@
         }
 
         function mount(parent) {
-            if (listNode.hasChildNodes() === true) {
-                if (parent instanceof HTMLElement) {
+            if (parent instanceof HTMLElement) {
                     parentElem = parent;
                     parentElem.appendChild(listNode);
-                } else {
-                    console.error("ListComponent: this parent is not correct type");
-                }
             } else {
-                console.error('ListComponent: List has not task');
+                    console.error("ListComponent: this parent is not correct type");
             }
         }
 

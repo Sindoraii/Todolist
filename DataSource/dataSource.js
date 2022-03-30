@@ -19,9 +19,9 @@
                         task.id = String(Date.now());
                     }
                 });
-                getCopyOfTasks(this.tasks);
+
                 this.listeners.forEach(listener => {
-                    listener(this.tasks);
+                    listener(getCopyOfTasks(this.tasks));
                 });
             } else {
                 console.error('DataSource: Data is not correct.');
@@ -33,8 +33,9 @@
          * @param {object} task - <title, description, status,id>*/
         function addTask(task) {
             if (task && typeof task === 'object') {
-                const newData = [...this.data];
-                newData.push(task);
+                const taskCopy = JSON.parse(JSON.stringify(task));
+                const newData = [...this.tasks];
+                newData.push(taskCopy);
                 this.update(newData);
             } else {
                 console.error('DataSource: Data is not correct.');
@@ -47,8 +48,8 @@
          * */
         function getDataElemById(id) {
             let elemById = null;
-            if (savedData !== null) {
-                savedData.forEach((elem) => {
+            if (getCopyOfTasks(this.tasks).length !== 0) {
+                getCopyOfTasks(this.tasks).forEach((elem) => {
                     if (elem.id === id) {
                         elemById = elem;
                     }
@@ -65,12 +66,21 @@
          * @param {string} idTask
          */
         function updateDataElemById(newData,idTask) {
-            let elem = dataSource.getDataElemById(idTask);
-            for(let prop in elem) {
-                elem[prop] = newData[prop];
-            }
-            this.update(savedData);
+            let newTasksForUpdating = [];
+            let dataCopy = JSON.parse(JSON.stringify(newData));
+            let elem = JSON.parse(JSON.stringify(dataSource.getDataElemById(idTask)));
 
+            for(let prop in elem) {
+                elem[prop] = dataCopy[prop];
+            }
+             this.tasks.forEach((item) => {
+                if(item.id === elem.id){
+                    item = elem;
+                }
+                 newTasksForUpdating.push(item);
+             })
+
+            this.update(getCopyOfTasks(newTasksForUpdating));
         }
 
 
@@ -81,16 +91,15 @@
          */
         function getCopyOfTasks(dataArray) {
             if (Array.isArray(dataArray) && dataArray.length !== 0) {
-                savedData = dataArray;
-                return savedData;
+                let deepCopy = JSON.parse(JSON.stringify(dataArray));
+                return deepCopy;
             } else {
                 console.error('DataSource: array is empty');
             }
         }
 
         /* init */
-        let savedData = null;
-        this.data = [];
+        this.tasks = [];
         this.listeners = [];
 
 

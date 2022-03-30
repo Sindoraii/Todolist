@@ -67,8 +67,8 @@
         confirmButton.onclick = () => { onclickHandler(taskName, taskDesc)}
         canselButton.onclick = closeEditModal;
 
-        document.addEventListener('click',(event)=>{
-            if(elem && !event.target.closest('.todo-editModal') ) {
+        document.addEventListener('click', (event) => {
+            if (elem.parentNode !== null && !event.target.closest('.todo-editModal')) {
                 closeEditModal();
             }
         })
