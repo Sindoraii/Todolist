@@ -59,7 +59,7 @@
 
         /* cansel button */
         const canselButton = document.createElement('button');
-        canselButton.innerText = 'Cansel';
+        canselButton.innerText = 'Cancel';
         canselButton.className = 'todo-editModal__button-cansel';
 
         /* events */
