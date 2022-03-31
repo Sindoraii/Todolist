@@ -11,7 +11,8 @@
          **/
         function update(tasks) {
             if (tasks && Array.isArray(tasks)) {
-                this.tasks = tasks;
+                let tasksCopy = getCopyOfTasks(tasks);
+                this.tasks = tasksCopy;
 
                 /* give ID to task */
                 this.tasks.forEach((task) => {

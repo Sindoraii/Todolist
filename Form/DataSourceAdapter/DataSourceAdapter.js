@@ -9,8 +9,7 @@
          */
         function adaptTask(taskName, taskDeck) {
             const task = {title: taskName, description: taskDeck, status: 'open'};
-            const taskCopy = JSON.parse(JSON.stringify(task));
-            dataSource.addTask(taskCopy);
+            dataSource.addTask(task);
         }
 
         this.adaptTask = adaptTask.bind(this);
