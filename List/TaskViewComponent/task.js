@@ -11,40 +11,41 @@
      */
     function TaskViewComponent(header, description, status, id) {
         /* PRIVATE  METHODS */
-        function createInputRadio(name, value, parent) {
-            if (parent instanceof HTMLElement && typeof value === 'string') {
-                /* input */
-                let radio = document.createElement('input');
-                radio.type = 'radio';
-                radio.name = name;
-                radio.id = value;
+        /* TODO TODO changing status for the next feature */
+        // function createInputRadio(name, value, parent) {
+        //     if (parent instanceof HTMLElement && typeof value === 'string') {
+        //         /* input */
+        //         let radio = document.createElement('input');
+        //         radio.type = 'radio';
+        //         radio.name = name;
+        //         radio.id = value;
+        //
+        //         /* label */
+        //         let label = document.createElement('label');
+        //         label.setAttribute('for', radio.id);
+        //         label.innerText = value;
+        //
+        //         /* wrapper */
+        //         const wrapper = document.createElement('div');
+        //         wrapper.className = 'todo-task_wrapper';
+        //         wrapper.appendChild(radio);
+        //         wrapper.appendChild(label);
+        //         parent.appendChild(wrapper);
+        //     } else {
+        //         console.error("TaskComponent: arguments is not correct type");
+        //     }
+        // }
 
-                /* label */
-                let label = document.createElement('label');
-                label.setAttribute('for', radio.id);
-                label.innerText = value;
-
-                /* wrapper */
-                const wrapper = document.createElement('div');
-                wrapper.className = 'todo-task_wrapper';
-                wrapper.appendChild(radio);
-                wrapper.appendChild(label);
-                parent.appendChild(wrapper);
-            } else {
-                console.error("TaskComponent: arguments is not correct type");
-            }
-        }
-
-        function createChangingStatusForm(parent) {
-            let form = document.createElement('div');
-            form.className = 'todo-task_check-status-form';
-
-            createInputRadio('status', 'open', form);
-            createInputRadio('status', 'in-progress', form);
-            createInputRadio('status', 'complete', form);
-            createInputRadio('status', 'decline', form);
-            parent.appendChild(form);
-        }
+        // function createChangingStatusForm(parent) {
+        //     let form = document.createElement('div');
+        //     form.className = 'todo-task_check-status-form';
+        //
+        //     createInputRadio('status', 'open', form);
+        //     createInputRadio('status', 'in-progress', form);
+        //     createInputRadio('status', 'complete', form);
+        //     createInputRadio('status', 'decline', form);
+        //     parent.appendChild(form);
+        // }
 
 
         /* PUBLIC METHODS */
@@ -86,7 +87,8 @@
         const wrapperRow = document.createElement('div');
         wrapperRow.className = 'todo-task_wrapper';
 
-        /* TODO  to create changing status className with adding different style */
+        /* TODO  to create changing status className with adding different style.
+            Changing status for the next feature */
         /*let status;
         let taskStatus = document.createElement('div');
 
@@ -117,20 +119,21 @@
             taskDesc.value = this.desc;
         }
 
-
+        /* TODO changing status for the next feature */
         /* changing status button */
-        const taskButton = document.createElement('button');
-        taskButton.className = 'todo-task_status todo-task_status_button-change';
-        taskButton.innerText = 'change status';
+        // const taskButton = document.createElement('button');
+        // taskButton.className = 'todo-task_status todo-task_status_button-change';
+        // taskButton.innerText = 'change status';
 
 
         /* events */
-        taskButton.addEventListener('click', (event) => {
-            let elem = event.target.parentNode.querySelector('.todo-task_check-status-form');
-            if (!event.target.parentNode.contains(elem)) {
-                createChangingStatusForm(event.target.parentNode);
-            }
-        })
+        /* TODO changing status for the next feature */
+        // taskButton.addEventListener('click', (event) => {
+        //     let elem = event.target.parentNode.querySelector('.todo-task_check-status-form');
+        //     if (!event.target.parentNode.contains(elem)) {
+        //         createChangingStatusForm(event.target.parentNode);
+        //     }
+        // })
 
         editButton.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -151,7 +154,7 @@
         taskNameHeader.appendChild(editButton);
         taskNode.appendChild(wrapperRow);
         wrapperRow.appendChild(taskDesc);
-        wrapperRow.appendChild(taskButton);
+        // wrapperRow.appendChild(taskButton);
     }
 
 
