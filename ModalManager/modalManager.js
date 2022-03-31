@@ -15,7 +15,7 @@
         modalsBox.id = 'modals';
 
         const editModal  = new EditModalTask(send); //instance of EditModal
-        let id = null;
+        let taskId = null;
 
 
         /* PUBLIC METHODS */
@@ -25,7 +25,7 @@
          * */
         function open(typeModalComp, idTask) {
             if (typeof idTask === 'string' && typeof typeModalComp === 'string') {
-                id = idTask;
+                taskId = idTask;
                  let elemTaskViewComponent = dataSource.getDataElemById(idTask);
                  body.insertBefore(modalsBox,body.children[1]);
                  modalsBox.appendChild(elem);
@@ -54,7 +54,7 @@
          * @param {HTMLElement} taskDesc - elem of EditModal
          */
         function send(taskName,taskDesc) {
-            const task = dataSource.getDataElemById(id);
+            const task = dataSource.getDataElemById(taskId);
             const copyTaskFromDS = JSON.parse(JSON.stringify(task));
             const newData = {};
 
@@ -63,7 +63,7 @@
                 newData.description = taskDesc.value;
                 newData[prop] = copyTaskFromDS[prop];
             }
-            dataSource.updateDataElemById(newData, id)
+            dataSource.updateDataElemById(newData, taskId);
         }
 
 
