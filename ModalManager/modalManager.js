@@ -26,8 +26,8 @@
         function open(typeModalComp, idTask) {
             if (typeof idTask === 'string' && typeof typeModalComp === 'string') {
                 taskId = idTask;
-                 let elemTaskViewComponent = dataSource.getDataElemById(idTask);
-                 body.insertBefore(modalsBox,body.children[1]);
+                let elemTaskViewComponent = dataSource.getDataElemById(idTask);
+                body.insertBefore(modalsBox,body.children[1]);
                  modalsBox.appendChild(elem);
                 getModal(typeModalComp, elemTaskViewComponent);
             } else {
@@ -50,17 +50,17 @@
         /* PRIVATE METHODS */
         /***
          * Updating task data in List
-         * @param {HTMLElement} taskName - elem of EditModal
-         * @param {HTMLElement} taskDesc - elem of EditModal
+         * @param {HTMLElement} taskNameNode - elem of edit modal
+         * @param {HTMLElement} taskDescNode - elem of edit modal
          */
-        function send(taskName,taskDesc) {
+        function send(taskNameNode,taskDescNode) {
             const task = dataSource.getDataElemById(taskId);
             const copyTaskFromDS = JSON.parse(JSON.stringify(task));
             const newData = {};
 
             for (let prop in copyTaskFromDS) {
-                newData.title = taskName.value;
-                newData.description = taskDesc.value;
+                newData.title = taskNameNode.value;
+                newData.description = taskDescNode.value;
                 newData[prop] = copyTaskFromDS[prop];
             }
             dataSource.updateDataElemById(newData, taskId);

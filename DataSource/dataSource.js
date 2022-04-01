@@ -14,6 +14,7 @@
                 let tasksCopy = getCopyOfTasks(tasks);
                 this.tasks = tasksCopy;
 
+
                 /* give ID to task */
                 this.tasks.forEach((task) => {
                     if (!task.id) {
@@ -44,21 +45,11 @@
         }
 
         /**
-         * Getting a task from the initial elem by its id
-         * @param {string} id
+         * Getting a task from the initial tasks array by task id
+         * @param {string} taskId
          * */
-        function getDataElemById(id) {
-            let elemById = null;
-            if (getCopyOfTasks(this.tasks).length !== 0) {
-                getCopyOfTasks(this.tasks).forEach((elem) => {
-                    if (elem.id === id) {
-                        elemById = elem;
-                    }
-                })
-            } else {
-                console.error('DataSource: data did not save');
-            }
-            return elemById;
+        function getDataElemById(taskId) {
+            return this.tasks.find((item) => item.id ===taskId)
         }
 
         /**
@@ -67,25 +58,15 @@
          * @param {string} idTask
          */
         function updateDataElemById(newData,idTask) {
-            let newTasksForUpdating = [];
-            let dataCopy = JSON.parse(JSON.stringify(newData));
-            let elem = JSON.parse(JSON.stringify(dataSource.getDataElemById(idTask)));
+            let taskFromDS = dataSource.getDataElemById(idTask);
+            let indexTask = this.tasks.findIndex((item)=> item ===taskFromDS);
 
-            for(let prop in elem) {
-                elem[prop] = dataCopy[prop];
-            }
-             this.tasks.forEach((item) => {
-                if(item.id === elem.id){
-                    item = elem;
-                }
-                 newTasksForUpdating.push(item);
-             })
-
-            this.update(getCopyOfTasks(newTasksForUpdating));
+            this.tasks[indexTask] = {...newData};
+            this.update(this.tasks);
         }
 
 
-        /*PRIVATE METHOD */
+        /*PRIVATE METHODS */
         /**
          * Setting data to initial elem
          * @param  {Array} dataArray - <{title, description, status: open | in-progress | complete | decline",id}>
@@ -104,7 +85,7 @@
         this.listeners = [];
 
 
-        /* PUBLISH METHODS */
+        /* PUBLIC METHODS */
         this.subscribe = subscribe.bind(this);
         this.update = update.bind(this);
         this.addTask = addTask.bind(this);

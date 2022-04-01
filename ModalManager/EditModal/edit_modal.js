@@ -12,9 +12,9 @@
 
         /* header */
         const headerOfModal = document.createElement('header');
-        const h2OfHeader = document.createElement('h2');
-        h2OfHeader.innerText = 'Task editing';
-        h2OfHeader.className = 'todo-editModal_header-h2';
+        const subheader = document.createElement('h2');
+        subheader.innerText = 'Task editing';
+        subheader.className = 'todo-editModal_header-h2';
         headerOfModal.className = 'todo-editModal_header';
 
         /* section for inputs */
@@ -77,11 +77,11 @@
         /* PRIVATE METHODS */
         /**
          * Handler for onclick-events
-         * @param {HTMLElement} title - input 'Task name'
-         * @param {HTMLElement} description -  textarea 'Description'
+         * @param {HTMLElement} titleNode - input 'Task name'
+         * @param {HTMLElement} descriptionNode -  textarea 'Description'
          * */
-        function onclickHandler(title,description) {
-            callback(title,description);
+        function onclickHandler(titleNode,descriptionNode) {
+            callback(titleNode,descriptionNode);
             closeEditModal();
         }
 
@@ -113,7 +113,7 @@
 
 
         elem.appendChild(headerOfModal);
-        headerOfModal.appendChild(h2OfHeader);
+        headerOfModal.appendChild(subheader);
         headerOfModal.appendChild(closeButton);
         elem.appendChild(taskData);
         taskData.appendChild(wrapperRow_1);
