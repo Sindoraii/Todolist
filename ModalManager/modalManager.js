@@ -56,13 +56,10 @@
         function send(taskNameNode,taskDescNode) {
             const task = dataSource.getDataElemById(taskId);
             const copyTaskFromDS = JSON.parse(JSON.stringify(task));
-            const newData = {};
+            const newData = {...copyTaskFromDS};
+            newData.title = taskNameNode.value;
+            newData.description = taskDescNode.value;
 
-            for (let prop in copyTaskFromDS) {
-                newData.title = taskNameNode.value;
-                newData.description = taskDescNode.value;
-                newData[prop] = copyTaskFromDS[prop];
-            }
             dataSource.updateDataElemById(newData, taskId);
         }
 
