@@ -15,3 +15,9 @@
     align-self: center;
     text-align: center;
 }
+.todo-list__wrapper {
+    display: block;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 0 8px 0 8px;
+}

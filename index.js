@@ -7,7 +7,26 @@ const formComponent = window.FormComponent;
 const stubData = [
     { title: 'header1', description:'Comment1', status: 'in-progress'},
     { title: 'header2',  description:'Comment2', status: 'failed'},
-    { title: 'header3',  description:'Comment3', status: 'success'}
+    { title: 'header3',  description:'Comment3', status: 'success'},
+    { title: 'header1', description:'Comment1', status: 'in-progress'},
+    { title: 'header2',  description:'Comment2', status: 'failed'},
+    { title: 'header3',  description:'Comment3', status: 'success'},
+    { title: 'header1', description:'Comment1', status: 'in-progress'},
+    { title: 'header2',  description:'Comment2', status: 'failed'},
+    { title: 'header3',  description:'Comment3', status: 'success'},
+    { title: 'header1', description:'Comment1', status: 'in-progress'},
+    { title: 'header2',  description:'Comment2', status: 'failed'},
+    { title: 'header3',  description:'Comment3', status: 'success'},
+    { title: 'header1', description:'Comment1', status: 'in-progress'},
+    { title: 'header2',  description:'Comment2', status: 'failed'},
+    { title: 'header3',  description:'Comment3', status: 'success'},
+    { title: 'header1', description:'Comment1', status: 'in-progress'},
+    { title: 'header2',  description:'Comment2', status: 'failed'},
+    { title: 'header3',  description:'Comment3', status: 'success'},
+    { title: 'header1', description:'Comment1', status: 'in-progress'},
+    { title: 'header2',  description:'Comment2', status: 'failed'},
+    { title: 'header3',  description:'Comment3', status: 'success'},
+
 ];
 
 // init SPA
