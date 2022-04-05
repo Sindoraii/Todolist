@@ -4,12 +4,11 @@
 
     function ListComponent() {
         function update (dataArray) {
-            // listNode.textContent = '';
-            wrapperForTasks.textContent = '';
+            listNode.textContent = '';
             dataArray.forEach((taskData) => {
                 const {title, description, status} = taskData;
                 let task = new TaskComponent(title,description,status);
-                task.mountTask(wrapperForTasks);
+                task.mountTask(listNode);
             })
         }
 
@@ -36,15 +35,7 @@
 
         const listNode = document.createElement('div');
         listNode.className = "todo-list";
-
-        const wrapperForTasks = document.createElement('article');
-        wrapperForTasks.className = 'todo-list__wrapper';
-        console.log(wrapperForTasks);
-
-
         let parentElem = null;
-
-        listNode.appendChild(wrapperForTasks);
 
         this.update = update.bind(this);
         this.mount = mount.bind(this);

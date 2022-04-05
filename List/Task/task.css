@@ -1,12 +1,6 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 input[type="radio"] {
     margin-right: 3px;
 }
-
 .todo-task {
     display: flex;
     flex-direction: column;
@@ -22,15 +16,11 @@ input[type="radio"] {
     margin: 11px 0 11px 0;
 }
 .todo-task_header {
-    padding: 8px;
-    flex-basis: 100%;
     font-size: 24px;
 }
 .todo-task_wrapper{
     display: flex;
     flex-direction: row;
-
-
 }
 .todo-task_status {
     min-width: 3em;
@@ -49,7 +39,6 @@ input[type="radio"] {
 .todo-task_desc {
     padding: 8px;
     margin: 8px;
-    flex: 1;
 }
 .todo-task_status_button-change {
     cursor: pointer;
@@ -65,6 +54,3 @@ input[type="radio"] {
 .todo-task_check-status-form > input {
     margin: 0 8px 2px 0;
 }
-
-
-
