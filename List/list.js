@@ -1,31 +1,32 @@
-(function (){
-    //import
-    const TaskComponent = window.TaskComponent;
+(function () {
+    /* import */
+    const TaskViewComponent = window.TaskViewComponent;
 
     function ListComponent() {
-        function update (dataArray) {
+        /**
+         *  Updating list
+         *  @param {Array} dataArray - <[{title, description, status: open | in-progress | complete | decline",id}]>
+         * */
+        function update(dataArray) {
             listNode.textContent = '';
+
             dataArray.forEach((taskData) => {
-                const {title, description, status} = taskData;
-                let task = new TaskComponent(title,description,status);
+                const {title, description, status, id} = taskData;
+                let task = new TaskViewComponent(title, description, status, id);
                 task.mountTask(listNode);
             })
         }
 
-       function mount(parent) {
-            if (listNode.hasChildNodes() === true) {
-                if (parent instanceof HTMLElement) {
+        function mount(parent) {
+            if (parent instanceof HTMLElement) {
                     parentElem = parent;
                     parentElem.appendChild(listNode);
-                } else {
+            } else {
                     console.error("ListComponent: this parent is not correct type");
-                }
-            }else {
-                console.error('ListComponent: List has not task');
             }
         }
 
-        function unmount (parent) {
+        function unmount(parent) {
             if (parent === parentElem) {
                 listNode.remove();
             } else {
@@ -33,15 +34,19 @@
             }
         }
 
-        const listNode = document.createElement('div');
+        /* init list instance */
+        const listNode = document.createElement('section');
         listNode.className = "todo-list";
-
         let parentElem = null;
 
+
+        /* PUBLISH METHODS */
         this.update = update.bind(this);
         this.mount = mount.bind(this);
         this.unmount = unmount.bind(this);
     }
-    //export
+
+
+    /* export */
     window.ListComponent = new ListComponent();
 })()

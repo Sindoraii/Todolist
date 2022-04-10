@@ -1,9 +1,9 @@
 (function(){
-    // import
+    /* import */
     const dataSourceAdapter = window.DataSourceAdapter;
 
     function FormComponent() {
-        //public methods
+        /* PUBLIC METHODS */
         function mount(parent) {
             if(parent && parent instanceof HTMLElement) {
                 parentElem = parent
@@ -28,21 +28,25 @@
             adapter.adaptTask(taskName, taskDesc);
         }
 
-        //structure of component
+
+        /* structure of component */
         const elem = document.createElement('form');
         elem.className = 'todo-form';
         let parentElem = null;
 
-        // elements of component
-        const formHead = document.createElement('div');
-        formHead.className = 'todo-form_header';
+
+        /* elements of component */
+        const formHead = document.createElement('h2');
+        formHead.className = 'todo-form_header-h2';
         formHead.innerText = 'Task form';
+
 
         const taskName = document.createElement('input');
         taskName.type = 'text';
         taskName.className = 'todo-form_input';
         taskName.id = 'taskName';
         taskName.name = 'taskName';
+
 
         const labelForTaskName = document.createElement('label');
         labelForTaskName.innerText = 'Task name:';
@@ -56,14 +60,17 @@
         taskDescription.id = 'description';
         taskDescription.name = 'description';
 
+
         const descLabel = document.createElement('label');
         descLabel.innerText = 'Description:';
         descLabel.setAttribute('for',taskDescription.id);
         descLabel.className = 'todo-form_label';
 
+
         const submitButton = document.createElement('button');
         submitButton.type = 'submit';
         submitButton.innerText = 'Submit';
+
 
         elem.appendChild(formHead);
         elem.appendChild(labelForTaskName);
@@ -71,16 +78,19 @@
         elem.appendChild(descLabel);
         elem.appendChild(taskDescription);
         elem.appendChild(submitButton);
-
         elem.addEventListener('submit',onSubmit);
 
-        // init private fields
+
+        /* init private fields */
         const adapter = dataSourceAdapter;
 
-        // publish methods
+
+        /* PUBLISH METHODS */
         this.mount = mount.bind(this);
         this.unmount = unmount.bind(this);
     }
-    // export
+
+
+    /* export */
     window.FormComponent = new FormComponent();
 })()
