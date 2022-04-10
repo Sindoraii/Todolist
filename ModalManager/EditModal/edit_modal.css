@@ -1,0 +1,80 @@
+.todo-editModal {
+    min-width: 30em;
+    min-height: 15em;
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.todo-editModal_header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: initial;
+    padding: 8px;
+    text-align: center;
+}
+.todo-editModal_header-h2 {
+    font-weight: initial;
+}
+.todo-editModal_button {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.todo-editModal_button-close {
+    background-image: url("icons8-close.svg");
+    position: static;
+}
+.todo-editModal__footer {
+    display: flex;
+    margin:auto 8px 8px;
+    justify-content: space-between;
+}
+.todo-editModal__button-confirm {
+    font-size: 14px;
+    border: 1px solid black;
+    width: 64px;
+    cursor: pointer;
+    padding: 8px;
+}
+.todo-editModal_button-confirm:hover {
+    background-color: lightblue;
+}
+.todo-editModal__button-cansel {
+    font-size: 14px;
+    border: 1px solid black;
+    width: 64px;
+    cursor: pointer;
+    padding: 8px;
+}
+.task-data {
+    display: flex;
+    padding: 8px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.task-data__wrap-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.task-data__input {
+    margin: 8px;
+    padding: 4px;
+    min-width: 184px;
+}
+.task-data__textarea {
+    resize: none;
+    margin: 8px;
+    padding: 4px;
+    font-family: sans-serif;
+    overflow: auto;
+    min-width: 184px;
+}
+.task-data__label {
+    min-width: 88px;
+}
