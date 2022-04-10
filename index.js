@@ -2,6 +2,7 @@
 const listComponent = window.ListComponent;
 const dataSource = window.DataSource;
 const formComponent = window.FormComponent;
+const modalManager = window.ModalManager;
 
 
 /* init stub data */
@@ -19,3 +20,6 @@ formComponent.mount(root);
 dataSource.subscribe(listComponent.update);
 dataSource.update(stubData);
 listComponent.mount(root);
+modalManager.mount(body);
+
+

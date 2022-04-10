@@ -16,6 +16,7 @@
 
         const editModal  = new EditModalTask(send); //instance of EditModal
         let taskId = null;
+        let parentElem = null;
 
 
         /* PUBLIC METHODS */
@@ -27,8 +28,7 @@
             if (typeof idTask === 'string' && typeof typeModalComp === 'string') {
                 taskId = idTask;
                 let elemTaskViewComponent = dataSource.getDataElemById(idTask);
-                body.insertBefore(modalsBox,body.children[1]);
-                 modalsBox.appendChild(elem);
+                modalsBox.appendChild(elem);
                 getModal(typeModalComp, elemTaskViewComponent);
             } else {
                 console.error('ModalManager: id is not correct');
@@ -46,6 +46,15 @@
             }
         }
 
+        function mount(parent) {
+            if (parent instanceof HTMLElement) {
+                parentElem = parent;
+                parentElem.appendChild(modalsBox);
+            }else {
+                console.error("ModalManager: this parent is not correct type");
+            }
+        }
+
 
         /* PRIVATE METHODS */
         /***
@@ -55,8 +64,7 @@
          */
         function send(taskNameNode,taskDescNode) {
             const task = dataSource.getDataElemById(taskId);
-            const copyTaskFromDS = JSON.parse(JSON.stringify(task));
-            const newData = {...copyTaskFromDS};
+            const newData = {...task};
             newData.title = taskNameNode.value;
             newData.description = taskDescNode.value;
 
@@ -64,8 +72,8 @@
         }
 
 
-        /* PUBLISH METHODS */
         this.open = open.bind(this);
+        this.mount = mount.bind(this);
     }
 
 

@@ -2,6 +2,9 @@
     display: none;
 }
 .todo-modals__active {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     position: absolute;
     top:0;
     z-index: 1;

@@ -1,8 +1,4 @@
 .todo-editModal {
-    position: fixed;
-    z-index: 2;
-    top:120px;
-    left: 550px;
     min-width: 30em;
     min-height: 15em;
     border: 1px solid black;
@@ -11,6 +7,8 @@
     flex-direction: column;
 }
 .todo-editModal_header {
+    display: flex;
+    justify-content: space-between;
     font-weight: initial;
     padding: 8px;
     text-align: center;
@@ -28,14 +26,12 @@
 }
 .todo-editModal_button-close {
     background-image: url("icons8-close.svg");
-    left:94%;
-    top: 3%;
+    position: static;
 }
 .todo-editModal__footer {
     display: flex;
     margin:auto 8px 8px;
     justify-content: space-between;
-
 }
 .todo-editModal__button-confirm {
     font-size: 14px;
