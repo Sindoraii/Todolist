@@ -3,7 +3,7 @@
 }
 .todo-modals__active {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     position: absolute;
     top:0;
