@@ -1,29 +1,20 @@
-*, :before,:after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .todo-form {
     display: flex;
     flex-direction: column;
     align-content: center;
     border:  1px solid black;
     width: 30em;
-    min-height: 10em;
     margin: 8px 8px 16px 8px;
 }
-.todo-form_header{
+.todo-form_header-h2{
     align-self: center;
-    font-size: 28px;
-    margin: 8px;
+    padding: 8px;
+    font-weight: initial;
 }
-
 .todo-form_label{
     margin:  0 8px ;
 }
 .todo-form_input {
-    border: 1px solid black;
     margin: 8px;
     padding: 4px;
 }

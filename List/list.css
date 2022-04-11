@@ -1,11 +1,10 @@
 .todo-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     border:  1px solid black;
     width: 30em;
     min-height: 5em;
     margin: 8px;
-    align-self: center;
-    text-align: center;
+    overflow-y: auto;
+    flex-grow: 1;
 }
