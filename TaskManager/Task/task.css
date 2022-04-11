@@ -1,0 +1,66 @@
+input[type="radio"] {
+    margin-right: 3px;
+}
+.todo-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:  1px solid black;
+    min-width: 20em;
+    min-height: 5em;
+    margin: 0 0 11px ;
+    align-self: center;
+    text-align: center;
+}
+.todo-task:first-child {
+    margin: 11px 0 11px 0;
+}
+.todo-task_header {
+    position: relative;
+    padding: 8px;
+    flex-basis: 100%;
+}
+.todo-task_header-h3 {
+    font-weight: initial;
+}
+.todo-task_wrapper{
+    display: flex;
+    flex-direction: row;
+}
+.todo-task_status {
+    min-width: 3em;
+    border: 1px solid black;
+    margin: 8px;
+}
+.todo-task_status_in-progress {
+    background-color: goldenrod;
+}
+.todo-task_status_failed {
+    background-color: darkred;
+}
+.todo-task_status_success {
+    background-color: green;
+}
+.todo-task_desc {
+    padding: 8px;
+    margin: 8px;
+    flex: 1;
+}
+.todo-task_status_button-change {
+    cursor: pointer;
+    padding: 8px;
+}
+.todo-task_status_button-change:hover {
+    background-color: lightblue;
+}
+.todo-task_check-status-form {
+    display: flex;
+    flex-direction: column;
+}
+.todo-task_check-status-form > input {
+    margin: 0 8px 2px 0;
+}
+.todo-task_close-button {
+    padding: 8px;
+    margin: 8px;
+}

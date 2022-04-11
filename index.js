@@ -3,6 +3,7 @@ const listComponent = window.ListComponent;
 const dataSource = window.DataSource;
 const formComponent = window.FormComponent;
 const modalManager = window.ModalManager;
+const TaskManager = window.TaskManager;
 
 
 /* init stub data */
@@ -38,6 +39,7 @@ const stubData = [
 /* init SPA */
 const root = document.getElementById('root');
 const body = document.getElementsByTagName('body')[0];
+const taskManager = new TaskManager(dataSource,root);
 formComponent.mount(root);
 dataSource.subscribe(listComponent.update);
 dataSource.update(stubData);

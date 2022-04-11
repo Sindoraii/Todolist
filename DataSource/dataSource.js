@@ -3,6 +3,7 @@
         /* PUBLIC METHODS */
         function subscribe(listener) {
             this.listeners.push(listener);
+            listener(this.data);
         }
 
         /**
@@ -44,6 +45,16 @@
             }
         }
 
+        function deleteTask(taskId){
+            const index = this.data.findIndex((item)=>{
+                return item.id === taskId;
+            })
+            if(index !== -1) {
+                const newData = [...this.data];
+                newData.splice(index,1);
+                this.update(newData);
+            }
+        }
         /**
          * Getting a task from the initial tasks array by task id
          * @param {string} taskId
@@ -81,6 +92,7 @@
         }
 
         /* init */
+        this.data = [];
         this.tasks = [];
         this.listeners = [];
 
@@ -91,6 +103,7 @@
         this.addTask = addTask.bind(this);
         this.getDataElemById = getDataElemById.bind(this);
         this.updateDataElemById = updateDataElemById.bind(this);
+        this.deleteTask = deleteTask.bind(this);
     }
 
 
