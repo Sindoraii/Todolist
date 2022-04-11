@@ -7,7 +7,6 @@ input[type="radio"] {
     justify-content: center;
     border:  1px solid black;
     min-width: 20em;
-    min-height: 5em;
     margin: 0 0 11px ;
     align-self: center;
     text-align: center;
