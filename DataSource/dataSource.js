@@ -11,7 +11,7 @@
          * @param {Array} tasks -  <{title, description, status: open | inProgress | complete | decline", id}>>
          **/
         function update(tasks) {
-            if (tasks && Array.isArray(tasks)) {
+            if (tasks && Array.isArray(tasks) && tasks.length !== 0) {
                 let tasksCopy = getCopyOfTasks(tasks);
                 this.tasks = tasksCopy;
 
@@ -25,6 +25,11 @@
 
                 this.listeners.forEach(listener => {
                     listener(getCopyOfTasks(this.tasks));
+                });
+            } else if(Array.isArray(tasks) && tasks.length === 0) {
+
+                this.listeners.forEach(listener => {
+                    listener([]);
                 });
             } else {
                 console.error('DataSource: Data is not correct.');
@@ -45,12 +50,16 @@
             }
         }
 
+        /**
+         * Deleting a task and updating list after deleting
+         * @param {string} taskId
+         */
         function deleteTask(taskId){
-            const index = this.data.findIndex((item)=>{
+            const index = this.tasks.findIndex((item)=>{
                 return item.id === taskId;
             })
             if(index !== -1) {
-                const newData = [...this.data];
+                const newData = [...this.tasks];
                 newData.splice(index,1);
                 this.update(newData);
             }
@@ -92,9 +101,10 @@
         }
 
         /* init */
-        this.data = [];
         this.tasks = [];
         this.listeners = [];
+        this.data = [];
+
 
 
         /* PUBLIC METHODS */
