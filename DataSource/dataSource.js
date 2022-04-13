@@ -14,8 +14,7 @@
             if (tasks && Array.isArray(tasks) && tasks.length !== 0) {
                 let tasksCopy = getCopyOfTasks(tasks);
                 this.tasks = tasksCopy;
-
-
+                
                 /* give ID to task */
                 this.tasks.forEach((task) => {
                     if (!task.id) {
@@ -29,7 +28,8 @@
             } else if(Array.isArray(tasks) && tasks.length === 0) {
 
                 this.listeners.forEach(listener => {
-                    listener([]);
+                    this.tasks = [];
+                    listener(this.tasks);
                 });
             } else {
                 console.error('DataSource: Data is not correct.');
