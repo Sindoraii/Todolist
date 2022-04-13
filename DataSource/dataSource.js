@@ -14,7 +14,7 @@
             if (tasks && Array.isArray(tasks) && tasks.length !== 0) {
                 let tasksCopy = getCopyOfTasks(tasks);
                 this.tasks = tasksCopy;
-                
+
                 /* give ID to task */
                 this.tasks.forEach((task) => {
                     if (!task.id) {
